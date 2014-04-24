@@ -43,6 +43,13 @@ var $board = $('.board'),
         
 
         var unitHtml = '';
+        //sort
+        conf.lands.sort(function(a, b) {
+            var textA = a.land.toUpperCase();
+            var textB = b.land.toUpperCase();
+            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        });
+
         unitHtml += '<select name="tyrell-new-unit-land" class="land"><option value="">---</option>';
         $.each(conf.lands, function (landIndex, land){
             unitHtml += '<option value="'+ land.land +'">'+ land.land +'</option>';
@@ -99,7 +106,7 @@ var $board = $('.board'),
                 $.each(house, function (landIndex, land) {
                     $.each(land.units, function (unit, count) {
                         if(count > 0) {
-                            htmlString += '<div class="' + unit + '-' + houseIndex + ' pos-' + land.land + ' unit"><div class="remove"></div></div>';
+                            htmlString += '<div data-land="' + land.land + '" data-house="' + houseIndex + '" data-unit="' + unit + '" class="' + unit + '-' + houseIndex + ' pos-' + land.land + ' unit"><div class="remove"></div></div>';
                         }
                     });
                 });
@@ -166,6 +173,7 @@ $('.text-list').on('focusout', function (event) {
 
 });
 
+
 //Limited add
 $('.settings-container').on('change', '.token', function (event) {
     // console.log(event);
@@ -181,6 +189,33 @@ $('.settings-container').on('change', '.token', function (event) {
     currentConf.orders[house][token] = land;
     location.hash = $.param(currentConf);
 
+});
+
+$('body').on('click', '.unit .remove', function (element) {
+    var house = $(this).parent().data('house');
+    var unit = $(this).parent().data('unit');
+    var land = $(this).parent().data('land');
+
+    $.each(currentConf.controlledLands, function (houseIndex, house) {
+        for(var i = house.length-1; i >= 0; i -= 1) {
+            console.log(house.length);
+            console.log(house);
+
+            if(house[i].land === land) {
+                house[i].units[unit]--;
+            }
+            var units = 0;
+            $.each(currentConf.controlledLands[houseIndex][i].units, function (unitIndex, unit) {
+               units += unit;
+            });
+
+            if(units === 0) {
+                currentConf.controlledLands[houseIndex].splice(i, 1);
+            }
+        };
+    });
+
+    location.hash = $.param(currentConf);
 });
 
 //Unlimited add

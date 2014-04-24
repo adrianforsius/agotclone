@@ -271,10 +271,10 @@ currentConf = {
                 }
             }
         ],
-        'lannister' : undefined,
-        'martell' : undefined,
-        'stark' : undefined,
-        'baratheon' : undefined
+        // 'lannister' : undefined,
+        // 'martell' : undefined,
+        // 'stark' : undefined,
+        // 'baratheon' : undefined
     },
     'lands':
     [
