@@ -313,24 +313,19 @@ The Shivering Sea: Ship</textarea>
     </div>
     <input type="radio" name="navContentControl" id="tyrellStuff"/>
     <div class="navContent tyrell-controls" data-house="tyrell">
-        <div class="orders-container">
+        <div class="settings-container">
             <h5>Orders:</h5>
             <div class="orders">
             </div>
-            <button class="placeOrder">Place order</button>
         </div>
-        <div class="units-container">
+        <div class="settings-container">
             <h5>Units:</h5>
             <div class="newUnit">
             </div>
             <button class="placeUnit">Place unit</button>
         </div>
-        <div class="updateBoard">
+        <div class="updateBoard settings-container">
             <textarea name="orders-tyrell" class="hidden-orders" style="display: none"></textarea>
-            <label class="fullwidth">
-                Powertokens in Areas:
-                <textarea name="powertokens-tyrell"></textarea>
-            </label>
             <label class="fullwidth">
                 Available Power Tokens:
                 <input name="availablePowertokens-tyrell" type="number" min="0" max="20" step="1" value="5"/>

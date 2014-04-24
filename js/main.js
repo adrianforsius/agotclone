@@ -14,52 +14,32 @@ var $board = $('.board'),
         // $('#shortlink').html('http://tinyurl.com/' + string);
     },
     setBoard = function (conf) {
+        console.log('set board');
         var value,
             htmlString = '';
-        console.log(conf);
-
-      
-
-        //Check if house is still alive
         if(conf.controlledLands.tyrell !== undefined) {
             var orderHtml = '';
-            $.each(conf.controlledLands.tyrell, function (orderIndex, orderLand) {
 
-                var order = undefined;
-                //Are orders defined/loopable?
-                if(conf.orders !== undefined && conf.orders.tyrell !== undefined) {
-                    order = conf.orders.tyrell.filter(function ( obj ) {
-                        if(obj.land === orderLand) { return obj }
-                    });
-                    order = order[0];
-                }
-
-                orderHtml += '<div class="order' + orderIndex + ' order">';
-                orderHtml += '<select name="tyrell-order-token" class="token"><option value="">---</option>';
+            $.each(conf.orders.tyrell, function (orderToken, orderLand) {
+                orderHtml += '<div class="ordera-select-' + orderToken + ' order">';
+                orderHtml += '<label>'+conf.orderTokens[orderToken] +'</label>';
+                orderHtml += '<select name="tyrell-order-token" data-house="tyrell" data-token="'+orderToken+'" class="token">';
+                orderHtml += '<option value="">---</option>';
 
                 $.each(conf.controlledLands.tyrell, function (landIndex, landName) {
-                    var selected = '';
-                    if(order !== undefined && landName.land === order.land) { 
-                        selected = 'selected';
+                    if(landName !== undefined) {
+                        var selected = '';
+                        if(orderLand === landName.land) {
+                            selected = 'selected';
+                        }
+                        orderHtml += '<option value="'+ landName.land +'" ' + selected + '>'+ landName.land +'</option>';
                     }
-                    orderHtml += '<option value="'+ landName.land +'" ' + selected + '>'+ landName.land +'</option>';
-                  
-                });
-                orderHtml += '</select>';
-                orderHtml += '<select name="tyrell-order-land" class="land"><option value="">---</option>';
-                $.each(conf.orderTokens, function (tokenIndex) {
-                    var selected = '';
-                    if(order !== undefined && tokenIndex === order.token) { 
-                        selected = 'selected';
-                    }
-                    orderHtml += '<option value="'+ tokenIndex +'" ' + selected + '>'+ tokenIndex +'</option>';
                 });
                 orderHtml += '</select>';
                 orderHtml += '</div>';
-
             });
-            $('.tyrell-controls .orders').html(orderHtml);
         }
+        $('.tyrell-controls .orders').html(orderHtml);
         
 
         var unitHtml = '';
@@ -69,11 +49,10 @@ var $board = $('.board'),
         });
         unitHtml += '</select>';
         unitHtml += '<select name="tyrell-new-unit-rank" class="unitRank"><option value="">---</option>';
-        $.each(conf.units, function (unit, value){
+        $.each(conf.units, function (unit, value) {
             unitHtml += '<option value="'+ unit +'">'+ unit +'</option>';
         });
         unitHtml += '</select>';
-
         $('.tyrell-controls .newUnit').html(unitHtml);
 
 
@@ -115,33 +94,26 @@ var $board = $('.board'),
         // Units
 
         $.each(conf.controlledLands, function (houseIndex, house) {
-            $.each(house, function (landIndex, land) {
-                $.each(land.units, function (unit, count) {
-                    if(count > 0) {
-                        htmlString += '<div class="' + unit + '-' + houseIndex + ' pos-' + land.land + ' unit"><div class="remove"></div></div>';
-                    }
+            //is house alive?
+            if(house !== undefined) {
+                $.each(house, function (landIndex, land) {
+                    $.each(land.units, function (unit, count) {
+                        if(count > 0) {
+                            htmlString += '<div class="' + unit + '-' + houseIndex + ' pos-' + land.land + ' unit"><div class="remove"></div></div>';
+                        }
+                    });
                 });
+            }
+        });
+
+        $.each(conf.orders, function (houseIndex, house) {
+            $.each(house, function (order, land) {
+                if(land !== '0') {
+                    htmlString += '<div class="order-' + order + ' pos-' + land + '"></div>';
+                }
             });
         });
 
-        if(conf.orders !== undefined) {
-            $.each(conf.orders, function (index, house) {
-                $.each(house, function (index, order) {
-                    htmlString += '<div class="order-' + order['token'] + ' pos-' + order['land'] + '"></div>';
-                });
-            });
-        }
-
-        // Power Tokens on the board
-        // for(var house in conf.powertokens) {
-        //     if (conf.powertokens[house].length > 0) {
-        //         value = conf.powertokens[house].split('\n');
-        //         for(var i = 0; i < value.length; i += 1) {
-        //             var area = value[i].toLowerCase().replace(/ - port$/, '-harbor').replace(/([' ]|^the )/g, '');
-        //             htmlString += '<div class="powertoken-' + house + ' pos-' + area + '"></div>';
-        //         }
-        //     }
-        // }
         // $.each(conf.powertokens, function (house, count) {
         //     htmlString += '<div class="tokenCounts-' + house + ' powertoken-' + house + '">';
         //     // available Power Tokens
@@ -154,36 +126,29 @@ var $board = $('.board'),
         //     htmlString += '</div>';
         //     htmlString += '</div>';
         // });
-        // for(var house in conf.availablePowertokens) {
-          
-        // }
+
         // housecard tracking
-        for(var house in conf.housecards) {
-            var housecards = conf.housecards[house].split('\n');
-            for (var i = 0; i < housecards.length; i += 1) {
-                $('[name="housecard-' + i + '-' + house + '"] + label').html(housecards[i]);
-            }
-        }
+        // for(var house in conf.housecards) {
+        //     var housecards = conf.housecards[house].split('\n');
+        //     for (var i = 0; i < housecards.length; i += 1) {
+        //         $('[name="housecard-' + i + '-' + house + '"] + label').html(housecards[i]);
+        //     }
+        // }
         $(':not(input)', $board).remove();
         $(htmlString).appendTo($board);
     };
   
 // inital setting of the board
-try {
+// try {
     var hash = location.hash;
     if (hash.indexOf('#') === 0) {
         hash = hash.substr(1);
-    }
-
-    if (hash.length > 0) {
         currentConf = $.deparam(hash);
-        setBoard(currentConf);
-    } else {
-        throw 'No Conf in hash';
     }
-} catch (e) {
     setBoard(currentConf);
-};
+// } catch (e) {
+//     console.log(e);
+// };
 
 //Text list
 $('.text-list').on('focusout', function (event) {
@@ -202,55 +167,58 @@ $('.text-list').on('focusout', function (event) {
 });
 
 //Limited add
-$('.navContent').on('click', '.placeOrder', function (event) {
-    var orders = $(event.delegateTarget).find('.orders');
-    var ordersCount = orders.length;
-    orders.each(function (index, value) {
+$('.settings-container').on('change', '.token', function (event) {
+    // console.log(event);
+    var land = event.target.value;
+    var token = $(event.currentTarget).data('token');
+    var house = $(event.currentTarget).data('house');
 
-        var token = $(this).find('.token').val();
-        var land = $(this).find('.land').val();
-
-        var house = $(event.delegateTarget).data('house');
-        if (currentConf.orders[house] === 0){
-            currentConf.orders[house] = [];
+    $.each(currentConf.orders[house], function (tokenName, landName) {
+        if(land == landName) {
+            currentConf.orders[house][tokenName] = 0;
         }
-        currentConf.orders[house].push({"land": land, "token": token});
     });
+    currentConf.orders[house][token] = land;
     location.hash = $.param(currentConf);
+
 });
 
 //Unlimited add
 $('.navContent').on('click', '.placeUnit', function (event) {
-    var orders = $(event.delegateTarget).find('.newUnit');
-    var ordersCount = orders.length;
-    orders.each(function (index, value) {
+    var unitRank = $(event.delegateTarget).find('.newUnit .unitRank').val();
+    var land = $(event.delegateTarget).find('.newUnit .land').val();
 
-        var unitRank = $(this).find('.unitRank').val();
-        var land = $(this).find('.land').val();
-
-
-        var house = $(event.delegateTarget).data('house');
-        var occupied = currentConf.controlledLands[house].filter(function ( obj ) {
-            if(obj !== undefined && obj.land === land) { return obj }
-        });
-        if(occupied === 0) {
-            occupied.units[unitRank] += 1;
-        }else{
-            var newUnit =
-            {
-                'land': land,
-                'units':
-                {
-                    'knight': 0,
-                    'footman': 0,
-                    'ship': 0,
-                    'powertoken': 0
-                }
-            };
-            newUnit.units[unitRank] += 1;
-            currentConf.controlledLands[house].push(newUnit);
-        }
+    var house = $(event.delegateTarget).data('house');
+    var occupied = currentConf.controlledLands[house].filter(function ( obj ) {
+        if(obj !== undefined && obj.land === land) { return obj }
     });
+
+    if(occupied === 0) {
+        occupied.units[unitRank] += 1;
+    }else{
+        var newUnit =
+        {
+            'land': land,
+            'order': false,
+            'units':
+            {
+                'knight': 0,
+                'footman': 0,
+                'ship': 0,
+                'powertoken': 0
+            }
+        };
+        $.each(currentConf.controlledLands, function (index, house) {
+            $.each(house, function (landIndex, landObj){
+                if(landObj.land === land) {
+                    currentConf.controlledLands[house][landIndex].splice(landIndex, 1);
+                }
+            });
+        });
+
+        newUnit.units[unitRank] += 1;
+        currentConf.controlledLands[house].push(newUnit);
+    }
     location.hash = $.param(currentConf);
 });
 

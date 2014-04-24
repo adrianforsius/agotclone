@@ -1384,3 +1384,11 @@ input[type="checkbox"][name^="housecard-"]:checked + label {
     top: 20px;
     left: 20px;
 }
+.order{
+    float: left;
+    width: 130px;
+}
+.settings-container .orders
+{
+    height: 50px;
+}

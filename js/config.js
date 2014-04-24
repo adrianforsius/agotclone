@@ -60,21 +60,126 @@ currentConf = {
     'ravenUsed': false,
     'orderTokens':
     {
-        'march-0': 0,
-        'march-1': 1,
-        'march-2': -1,
-        'defend-0': 0,
-        'defend-1': 1,
-        'defend-2': 1
+        'march-0': 'March -1',
+        'march-1': 'March +0',
+        'march-2': 'March +1 (*)',
+        'defend-1': 'Defend +1',
+        'defend-1': 'Defend +1',
+        'defend-2': 'Defend +2 (*)',
+        'raid-1': 'Raid',
+        'raid-1': 'Raid',
+        'raid-2': 'Raid (*)',
+        'power-1': 'CPower',
+        'power-1': 'CPower',
+        'power-2': 'CPower (*)',
+        'support-1': 'Support',
+        'support-1': 'Support',
+        'support-2': 'Support +1 (*)',
     },
     'orders' : 
     {
-        'baratheon' : 0,
-        'greyjoy' : 0,
-        'lannister' : 0,
-        'martell' : 0,
-        'stark' : 0,
-        'tyrell' : 0
+        'tyrell': {
+            'march-0': '0',
+            'march-1': '0',
+            'march-2': '0',
+            'defend-1': '0',
+            'defend-1': '0',
+            'defend-2': '0',
+            'raid-1': '0',
+            'raid-1': '0',
+            'raid-2': '0',
+            'power-1': '0',
+            'power-1': '0',
+            'power-2': '0',
+            'support-1': '0',
+            'support-1': '0',
+            'support-2': '0',
+        },
+        'greyjoy': {
+            'march-0': '0',
+            'march-1': '0',
+            'march-2': '0',
+            'defend-1': '0',
+            'defend-1': '0',
+            'defend-2': '0',
+            'raid-1': '0',
+            'raid-1': '0',
+            'raid-2': '0',
+            'power-1': '0',
+            'power-1': '0',
+            'power-2': '0',
+            'support-1': '0',
+            'support-1': '0',
+            'support-2': '0',
+        },
+        'lannister' : {
+            'march-0': '0',
+            'march-1': '0',
+            'march-2': '0',
+            'defend-1': '0',
+            'defend-1': '0',
+            'defend-2': '0',
+            'raid-1': '0',
+            'raid-1': '0',
+            'raid-2': '0',
+            'power-1': '0',
+            'power-1': '0',
+            'power-2': '0',
+            'support-1': '0',
+            'support-1': '0',
+            'support-2': '0',
+        },
+        'martell' : {
+            'march-0': '0',
+            'march-1': '0',
+            'march-2': '0',
+            'defend-1': '0',
+            'defend-1': '0',
+            'defend-2': '0',
+            'raid-1': '0',
+            'raid-1': '0',
+            'raid-2': '0',
+            'power-1': '0',
+            'power-1': '0',
+            'power-2': '0',
+            'support-1': '0',
+            'support-1': '0',
+            'support-2': '0',
+        },
+        'stark' : {
+            'march-0': '0',
+            'march-1': '0',
+            'march-2': '0',
+            'defend-1': '0',
+            'defend-1': '0',
+            'defend-2': '0',
+            'raid-1': '0',
+            'raid-1': '0',
+            'raid-2': '0',
+            'power-1': '0',
+            'power-1': '0',
+            'power-2': '0',
+            'support-1': '0',
+            'support-1': '0',
+            'support-2': '0',
+        },
+        'baratheon': {
+            'march-0': '0',
+            'march-1': '0',
+            'march-2': '0',
+            'defend-1': '0',
+            'defend-1': '0',
+            'defend-2': '0',
+            'raid-1': '0',
+            'raid-1': '0',
+            'raid-2': '0',
+            'power-1': '0',
+            'power-1': '0',
+            'power-2': '0',
+            'support-1': '0',
+            'support-1': '0',
+            'support-2': '0',
+        },
     },
     'controlledLands': 
     {
@@ -82,6 +187,7 @@ currentConf = {
         [
             {
                 'land': 'highgarden',
+                'order': false,
                 'units':
                 {
                     'knight': 1,
@@ -91,7 +197,35 @@ currentConf = {
                 }
             },
             {
-                'land': 'oldtown',
+
+                'land': 'dornishmarches',
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 1,
+                    'ship': 0,
+                    'powertoken': 0
+                }
+            },
+            {
+
+                'land': 'redwynestraights',
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 0,
+                    'ship': 1,
+                    'powertoken': 0
+                }
+            }
+        ],
+        'greyjoy':
+        [
+            {
+                'land': 'pyke',
+                'order': false,
                 'units':
                 {
                     'knight': 1,
@@ -99,9 +233,44 @@ currentConf = {
                     'ship': 0,
                     'powertoken': 0
                 }
+            },
+            {
+
+                'land': 'pyke-harbor',
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 0,
+                    'ship': 1,
+                    'powertoken': 0
+                }
+            },
+            {
+
+                'land': 'ironmansbay',
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 0,
+                    'ship': 1,
+                    'powertoken': 0
+                }
+            },
+            {
+
+                'land': 'greywaterwatch',
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 1,
+                    'ship': 0,
+                    'powertoken': 0
+                }
             }
         ],
-        'greyjoy' : undefined,
         'lannister' : undefined,
         'martell' : undefined,
         'stark' : undefined,
@@ -146,17 +315,17 @@ currentConf = {
         },
             {
             'land': 'blackwaterbay',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },
             {
             'land': 'eastsummersea',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },
             {
             'land': 'westsummerseaa',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },
             {
@@ -182,11 +351,12 @@ currentConf = {
           {
             'land': 'stormsend',
             'terrain': 'land',
-            'occupied': true
+            'occupied': true,
+            'harbor': 'stormsend-harbor',
         },
           {
             'land': 'stormsend-harbor',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },
           {
@@ -207,27 +377,29 @@ currentConf = {
                       {
             'land': 'oldtown',
             'terrain': 'land',
-            'occupied': true
+            'occupied': true,
+            'harbor': 'oldtown-harbor'
         },
                       {
             'land': 'oldtown-harbor',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },
                       {
             'land': 'redwynestraights',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },
                          {
             'land': 'sunspear',
             'terrain': 'land',
-            'occupied': true
+            'occupied': true,
+            'harbor': 'sunspear-harbor'
         },
 
              {
             'land': 'sunspear-harbor',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },
 
@@ -239,19 +411,20 @@ currentConf = {
 
              {
             'land': 'seaofdorne',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },
 
              {
             'land': 'pyke',
             'terrain': 'land',
-            'occupied': true
+            'occupied': true,
+            'harbor': 'pyke-harbor'
         },
 
              {
             'land': 'pyke-harbor',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },
 
@@ -266,17 +439,15 @@ currentConf = {
             'terrain': 'land',
             'occupied': true
         },
-
              {
             'land': 'lannisport',
             'terrain': 'land',
-            'occupied': true
+            'occupied': true,
+            'harbor': 'lannisport-harbor'
         },
-
-
-             {
+        {
             'land': 'lannisport-harbor',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },
 
@@ -314,11 +485,11 @@ currentConf = {
             'occupied': true
         },          {
             'land': 'ironmansbay',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },          {
             'land': 'winterfell-harbor',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },          {
             'land': 'karhold',
@@ -330,11 +501,11 @@ currentConf = {
             'occupied': true
         },          {
             'land': 'whiteharbor',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },          {
             'land': 'whiteharbor-harbor',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },
       {
@@ -362,7 +533,7 @@ currentConf = {
             'occupied': true
         },          {
             'land': 'dragonstone-harbor',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },          {
             'land': 'kingswood',
@@ -370,25 +541,27 @@ currentConf = {
             'occupied': true
         },          {
             'land': 'bayofice',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },          {
             'land': 'shiveringsea',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },          {
             'land': 'narrowsea',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },          {
             'land': 'shipbreakerbay',
-            'terrain': 'land',
+            'terrain': 'water',
             'occupied': true
         },          {
             'land': 'winterfell',
-            'terrain': 'land',
-            'occupied': true
-        },    {
+            'terrain': 'water',
+            'occupied': true,
+            'harbor': 'winterfell-harbor'
+        },    
+        {
             'land': 'castleblack',
             'terrain': 'land',
             'occupied': true
@@ -398,7 +571,8 @@ currentConf = {
     {
         'knight': 2,
         'footman': 1,
-        'ship': 1
+        'ship': 1,
+        'powertoken': '1cp'
     },
     'powertokens': {
         'baratheon': 5,
