@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title> - jsFiddle demo</title>
+
+  <link rel="stylesheet" type="text/css" href="main.css">
+
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js'></script>
+  <script type='text/javascript' src="js/deparam.js"></script>
+  <script type='text/javascript' src="js/config.js"></script>
+  <script type='text/javascript' src="js/main.js"></script>
+
+</head>
+<body>
+  <div class="controls">
+    <ul class="interfaceControls"
+        ><li><label for="toggleUnits">Show/Hide Units on Board</label></li
+        ><li><label for="toggleOrders">Show/Hide Orders on Board</label></li
+        ><li><label for="togglePowertokens">Show/Hide Powertokens on Board</label></li
+        ><li id="shortlink"></li
+    ></ul>
+    <ul class="nav"
+        ><li><label for="tracks">Influence Tracks/Supply/…</label></li
+        ><li><label for="baratheonStuff">Baratheon: Settings</label></li
+        ><li><label for="greyjoyStuff">Greyjoy: Settings</label></li
+        ><li><label for="lannisterStuff">Lannister: Settings</label></li
+        ><li><label for="martellStuff">Martell: Settings</label></li
+        ><li><label for="starkStuff">Stark: Settings</label></li
+        ><li><label for="tyrellStuff">Tyrell: Settings</label></li
+    ></ul>
+    <input type="radio" name="navContentControl" id="tracks"/>
+    <div class="navContent">
+        <div class="text-list" >
+        <label class="fullwidth">
+            Iron Throne Order:
+            <textarea class="list" name="ironThroneOrder" data-path="ironThroneOrder">Baratheon
+Lannister
+Stark
+Martell
+Greyjoy
+Tyrell
+</textarea>
+        </label>
+        </div>
+        <div class="text-list" >
+        <label class="fullwidth">
+            Fiefdom Order:
+            <textarea class="list" name="ironThroneOrder" data-path="fiefdomOrder">Baratheon
+Tyrell
+Martell
+Stark
+Baratheon
+Lannister</textarea>
+        </label>
+        </div>
+        <div class="text-list" >
+        <label class="fullwidth">
+            King's Court Order:
+            <textarea class="list" name="ironThroneOrder" data-path="kingsCourtOrder">Baratheon
+Stark
+Martell
+Baratheon
+Tyrell
+Greyjoy</textarea>
+        </label>
+        </div>
+        <label class="fullwidth">
+            Supply:
+            <textarea name="supply">Baratheon: 2
+Greyjoy: 2
+Lannister: 2
+Martell: 2
+Stark: 1
+Tyrell: 2</textarea>
+        </label>
+        <label class="fullwidth">
+            Victory:
+            <textarea name="victory">Baratheon: 1
+Greyjoy: 1
+Lannister: 1
+Martell: 1
+Stark: 2
+Tyrell: 1</textarea>
+        </label>
+        <label class="fullwidth">
+            Garrisons:
+            <textarea name="garrisons">King's Landing: 5
+The Eyrie: 6
+Dragonstone: 2
+Winterfell: 2
+Lannisport: 2
+Highgarden: 2
+Sunspear: 2
+Pyke: 2</textarea>
+        </label>
+        <label class="fullwidth">
+            Wildlings: <input type="number" step="2" min="0" max="12" value="2" name="wildlings"/>
+        </label>
+        <label class="fullwidth">
+            Round: <input type="number" step="1" min="1" max="10" value="1" name="round"/>
+        </label>
+        <lable class="fullwidth">
+            Valyrian Steel Blade was used: <input type="checkbox" name="vsb-used" />
+        </label>
+        <lable class="fullwidth">
+            Raven was used: <input type="checkbox" name="raven-used" />
+        </label>
+        <label class="fullwidth">
+            Max Power Tokens:
+            <input name="maxPowertokens" type="number" step="1" value="20"/>
+        </label>
+        <label class="fullwidth">
+            Baratheons House Cards:
+            <textarea name="housecards-baratheon"></textarea>
+        </label>
+        <label class="fullwidth">
+            Greyjoys House Cards:
+            <textarea name="housecards-greyjoy"></textarea>
+        </label>
+        <label class="fullwidth">
+            Lannisters House Cards:
+            <textarea name="housecards-lannister"></textarea>
+        </label>
+        <label class="fullwidth">
+            Martells House Cards:
+            <textarea name="housecards-martell"></textarea>
+        </label>
+        <label class="fullwidth">
+            Starks House Cards:
+            <textarea name="housecards-stark"></textarea>
+        </label>
+        <label class="fullwidth">
+            Tyrells House Cards:
+            <textarea name="housecards-tyrell"></textarea>
+        </label>
+    </div>
+    <input type="radio" name="navContentControl" id="baratheonStuff"/>
+    <div class="navContent">
+        <label class="fullwidth">
+            Units:
+            <textarea name="units-baratheon">Dragonstone: Footman, Knight
+Kingswood: Footman
+Shipbreaker Bay: Ship, Ship</textarea>
+        </label>
+        <label class="fullwidth">
+            Orders:
+            <textarea name="orders-baratheon"></textarea>
+        </label>
+        <label class="fullwidth">
+            Powertokens in Areas:
+            <textarea name="powertokens-baratheon"></textarea>
+        </label>
+        <label class="fullwidth">
+            Available Power Tokens:
+            <input name="availablePowertokens-baratheon" type="number" min="0" max="20" step="1" value="5"/>
+        </label>
+		<input type="checkbox" name="housecard-0-baratheon" id="housecard-0-baratheon">
+        <label for="housecard-0-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534314_t.png"></label>
+        <input type="checkbox" name="housecard-1-baratheon" id="housecard-1-baratheon">
+        <label for="housecard-1-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534312_t.png"></label>
+        <input type="checkbox" name="housecard-2-baratheon" id="housecard-2-baratheon">
+        <label for="housecard-2-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534308_t.png"></label>
+        <input type="checkbox" name="housecard-3-baratheon" id="housecard-3-baratheon" checked="checked">
+        <label for="housecard-3-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534307_t.png"></label>
+        <input type="checkbox" name="housecard-4-baratheon" id="housecard-4-baratheon">
+        <label for="housecard-4-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534310_t.png"></label>
+        <input type="checkbox" name="housecard-5-baratheon" id="housecard-5-baratheon">
+        <label for="housecard-5-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534313_t.png"></label>
+        <input type="checkbox" name="housecard-6-baratheon" id="housecard-6-baratheon">
+        <label for="housecard-6-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534311_t.png"></label>
+    </div>
+    <input type="radio" name="navContentControl" id="greyjoyStuff"/>
+    <div class="navContent">
+        <label class="fullwidth">
+            Units:
+            <textarea name="units-greyjoy">Pyke: Footman, Knight
+Greywater Watch: Footman
+Ironman's Bay: Ship
+Pyke - Port: Ship</textarea>
+        </label>
+        <label class="fullwidth">
+            Orders:
+            <textarea name="orders-greyjoy"></textarea>
+        </label>
+        <label class="fullwidth">
+            Powertokens in Areas:
+            <textarea name="powertokens-greyjoy"></textarea>
+        </label>
+        <label class="fullwidth">
+            Available Power Tokens:
+            <input name="availablePowertokens-greyjoy" type="number" min="0" max="20" step="1" value="5"/>
+        </label>
+		 <input type="checkbox" name="housecard-0-greyjoy" id="housecard-0-greyjoy">
+        <label for="housecard-0-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535247_t.png"></label>
+        <input type="checkbox" name="housecard-1-greyjoy" id="housecard-1-greyjoy">
+        <label for="housecard-1-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535250_t.png"></label>
+        <input type="checkbox" name="housecard-2-greyjoy" id="housecard-2-greyjoy">
+        <label for="housecard-2-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535244_t.png"></label>
+        <input type="checkbox" name="housecard-3-greyjoy" id="housecard-3-greyjoy">
+        <label for="housecard-3-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535249_t.png"></label>
+        <input type="checkbox" name="housecard-4-greyjoy" id="housecard-4-greyjoy">
+        <label for="housecard-4-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535246_t.png"></label>
+        <input type="checkbox" name="housecard-5-greyjoy" id="housecard-5-greyjoy">
+        <label for="housecard-5-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535243_t.png"></label>
+        <input type="checkbox" name="housecard-6-greyjoy" id="housecard-6-greyjoy">
+        <label for="housecard-6-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535241_t.png"></label>
+    </div>
+    <input type="radio" name="navContentControl" id="lannisterStuff"/>
+    <div class="navContent">
+        <label class="fullwidth">
+            Units:
+            <textarea name="units-lannister">Lannisport: Footman, Knight
+Stoney Sept: Footman
+The Golden Sound: Ship</textarea>
+        </label>
+        <label class="fullwidth">
+            Orders:
+            <textarea name="orders-lannister"></textarea>
+        </label>
+        <label class="fullwidth">
+            Powertokens in Areas:
+            <textarea name="powertokens-lannister"></textarea>
+        </label>
+        <label class="fullwidth">
+            Available Power Tokens:
+            <input name="availablePowertokens-lannister" type="number" min="0" max="20" step="1" value="5"/>
+        </label>
+		 <input type="checkbox" name="housecard-0-lannister" id="housecard-0-lannister">
+        <label for="housecard-0-lannister"><img src="http://cf.geekdo-images.com/images/pic1535259_t.png"></label>
+        <input type="checkbox" name="housecard-1-lannister" id="housecard-1-lannister">
+        <label for="housecard-1-lannister"><img src="http://cf.geekdo-images.com/images/pic1535253_t.png"></label>
+        <input type="checkbox" name="housecard-2-lannister" id="housecard-2-lannister">
+        <label for="housecard-2-lannister"><img src="http://cf.geekdo-images.com/images/pic1535254_t.png"></label>
+        <input type="checkbox" name="housecard-3-lannister" id="housecard-3-lannister">
+        <label for="housecard-3-lannister"><img src="http://cf.geekdo-images.com/images/pic1535255_t.png"></label>
+        <input type="checkbox" name="housecard-4-lannister" id="housecard-4-lannister">
+        <label for="housecard-4-lannister"><img src="http://cf.geekdo-images.com/images/pic1535256_t.png"></label>
+        <input type="checkbox" name="housecard-5-lannister" id="housecard-5-lannister">
+        <label for="housecard-5-lannister"><img src="http://cf.geekdo-images.com/images/pic1535258_t.png"></label>
+        <input type="checkbox" name="housecard-6-lannister" id="housecard-6-lannister">
+        <label for="housecard-6-lannister"><img src="http://cf.geekdo-images.com/images/pic1535251_t.png"></label>
+    </div>
+    <input type="radio" name="navContentControl" id="martellStuff"/>
+    <div class="navContent">
+        <label class="fullwidth">
+            Units:
+            <textarea name="units-martell">Sunspear: Footman, Knight
+Salt Shore: Footman
+Sea of Dorne: Ship</textarea>
+        </label>
+        <label class="fullwidth">
+            Orders:
+            <textarea name="orders-martell"></textarea>
+        </label>
+        <label class="fullwidth">
+            Powertokens in Areas:
+            <textarea name="powertokens-martell"></textarea>
+        </label>
+        <label class="fullwidth">
+            Available Power Tokens:
+            <input name="availablePowertokens-martell" type="number" min="0" max="20" step="1" value="5"/>
+        </label>
+		 <input type="checkbox" name="housecard-0-martell" id="housecard-0-martell">
+        <label for="housecard-0-martell"><img src="http://cf.geekdo-images.com/images/pic1535266_t.png"></label>
+        <input type="checkbox" name="housecard-1-martell" id="housecard-1-martell">
+        <label for="housecard-1-martell"><img src="http://cf.geekdo-images.com/images/pic1535260_t.png"></label>
+        <input type="checkbox" name="housecard-2-martell" id="housecard-2-martell" checked="checked">
+        <label for="housecard-2-martell"><img src="http://cf.geekdo-images.com/images/pic1535262_t.png"></label>
+        <input type="checkbox" name="housecard-3-martell" id="housecard-3-martell">
+        <label for="housecard-3-martell"><img src="http://cf.geekdo-images.com/images/pic1535265_t.png"></label>
+        <input type="checkbox" name="housecard-4-martell" id="housecard-4-martell">
+        <label for="housecard-4-martell"><img src="http://cf.geekdo-images.com/images/pic1535264_t.png"></label>
+        <input type="checkbox" name="housecard-5-martell" id="housecard-5-martell" checked="checked">
+        <label for="housecard-5-martell"><img src="http://cf.geekdo-images.com/images/pic1535261_t.png"></label>
+        <input type="checkbox" name="housecard-6-martell" id="housecard-6-martell">
+        <label for="housecard-6-martell"><img src="http://cf.geekdo-images.com/images/pic1535263_t.png"></label>
+    </div>
+    <input type="radio" name="navContentControl" id="starkStuff"/>
+    <div class="navContent">
+        <label class="fullwidth">
+            Units:
+            <textarea name="units-stark">Winterfell: Footman, Knight
+White Harbor: Footman
+The Shivering Sea: Ship</textarea>
+        </label>
+        <label class="fullwidth">
+            Orders:
+            <textarea name="orders-stark"></textarea>
+        </label>
+        <label class="fullwidth">
+            Powertokens in Areas:
+            <textarea name="powertokens-stark"></textarea>
+        </label>
+        <label class="fullwidth">
+            Available Power Tokens:
+            <input name="availablePowertokens-stark" type="number" min="0" max="20" step="1" value="5"/>
+        </label>
+		 <input type="checkbox" name="housecard-0-stark" id="housecard-0-stark">
+        <label for="housecard-0-stark"><img src="http://cf.geekdo-images.com/images/pic1535269_t.png"></label>
+        <input type="checkbox" name="housecard-1-stark" id="housecard-1-stark">
+        <label for="housecard-1-stark"><img src="http://cf.geekdo-images.com/images/pic1535271_t.png"></label>
+        <input type="checkbox" name="housecard-2-stark" id="housecard-2-stark">
+        <label for="housecard-2-stark"><img src="http://cf.geekdo-images.com/images/pic1535273_t.png"></label>
+        <input type="checkbox" name="housecard-3-stark" id="housecard-3-stark">
+        <label for="housecard-3-stark"><img src="http://cf.geekdo-images.com/images/pic1535270_t.png"></label>
+        <input type="checkbox" name="housecard-4-stark" id="housecard-4-stark">
+        <label for="housecard-4-stark"><img src="http://cf.geekdo-images.com/images/pic1535272_t.png"></label>
+        <input type="checkbox" name="housecard-5-stark" id="housecard-5-stark">
+        <label for="housecard-5-stark"><img src="http://cf.geekdo-images.com/images/pic1535267_t.png"></label>
+        <input type="checkbox" name="housecard-6-stark" id="housecard-6-stark">
+        <label for="housecard-6-stark"><img src="http://cf.geekdo-images.com/images/pic1535268_t.png"></label>
+    </div>
+    <input type="radio" name="navContentControl" id="tyrellStuff"/>
+    <div class="navContent tyrell-controls" data-house="tyrell">
+        <div class="orders-container">
+            <h5>Orders:</h5>
+            <div class="orders">
+            </div>
+            <button class="placeOrder">Place order</button>
+        </div>
+        <div class="units-container">
+            <h5>Units:</h5>
+            <div class="newUnit">
+            </div>
+            <button class="placeUnit">Place unit</button>
+        </div>
+        <div class="updateBoard">
+            <textarea name="orders-tyrell" class="hidden-orders" style="display: none"></textarea>
+            <label class="fullwidth">
+                Powertokens in Areas:
+                <textarea name="powertokens-tyrell"></textarea>
+            </label>
+            <label class="fullwidth">
+                Available Power Tokens:
+                <input name="availablePowertokens-tyrell" type="number" min="0" max="20" step="1" value="5"/>
+            </label>
+    		 <input type="checkbox" name="housecard-0-tyrell" id="housecard-0-tyrell" checked="checked">
+            <label for="housecard-0-tyrell"><img src="http://cf.geekdo-images.com/images/pic1535277_t.png"></label>
+            <input type="checkbox" name="housecard-1-tyrell" id="housecard-1-tyrell">
+            <label for="housecard-1-tyrell"><img src="http://cf.geekdo-images.com/images/pic1535276_t.png"></label>
+            <input type="checkbox" name="housecard-2-tyrell" id="housecard-2-tyrell">
+            <label for="housecard-2-tyrell"><img src="http://cf.geekdo-images.com/images/pic1535275_t.png"></label>
+            <input type="checkbox" name="housecard-3-tyrell" id="housecard-3-tyrell">
+            <label for="housecard-3-tyrell"><img src="http://cf.geekdo-images.com/images/pic1535280_t.png"></label>
+            <input type="checkbox" name="housecard-4-tyrell" id="housecard-4-tyrell">
+            <label for="housecard-4-tyrell"><img src="http://cf.geekdo-images.com/images/pic1535274_t.png"></label>
+            <input type="checkbox" name="housecard-5-tyrell" id="housecard-5-tyrell">
+            <label for="housecard-5-tyrell"><img src="http://cf.geekdo-images.com/images/pic1535278_t.png"></label>
+            <input type="checkbox" name="housecard-6-tyrell" id="housecard-6-tyrell">
+            <label for="housecard-6-tyrell"><img src="http://cf.geekdo-images.com/images/pic1535279_t.png"></label>
+        </div>
+    </div>
+</div>
+<div class="board">
+    <input type="checkbox" id="toggleUnits" checked="checked"/>
+    <input type="checkbox" id="toggleOrders" checked="checked"/>
+    <input type="checkbox" id="togglePowertokens" checked="checked"/>
+
+</div>
+
+</body>
+
+
+</html>
