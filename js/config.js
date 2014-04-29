@@ -28,8 +28,8 @@ currentConf = {
         5: 'tyrell',
         6: 'greyjoy',
     },
-    'garrisons':  
-    {        
+    'garrisons':
+    {
         'kingslanding': 5,
         'eyrie': 6,
         'dragonstone': 2,
@@ -39,7 +39,7 @@ currentConf = {
         'sunspear': 2,
         'pyke': 2,
     },
-    'supply':   
+    'supply':
     {
         'lannister': 2,
         'stark': 1,
@@ -76,7 +76,7 @@ currentConf = {
         'support-1': 'Support',
         'support-2': 'Support +1 (*)',
     },
-    'orders' : 
+    'orders' :
     {
         'tyrell': {
             'march-0': '0',
@@ -181,7 +181,7 @@ currentConf = {
             'support-2': '0',
         },
     },
-    'controlledLands': 
+    'controlledLands':
     {
         'tyrell':
         [
@@ -560,7 +560,7 @@ currentConf = {
             'terrain': 'water',
             'occupied': true,
             'harbor': 'winterfell-harbor'
-        },    
+        },
         {
             'land': 'castleblack',
             'terrain': 'land',
@@ -582,8 +582,5 @@ currentConf = {
         'stark': 5,
         'tyrell': 5,
     },
-    'max':
-    {
-        'powertokens': 20,
-    }
+    'maxPowertokens': 20,
 };

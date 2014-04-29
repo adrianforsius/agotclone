@@ -40,7 +40,7 @@ var $board = $('.board'),
             });
         }
         $('.tyrell-controls .orders').html(orderHtml);
-        
+
 
         var unitHtml = '';
         //sort
@@ -72,12 +72,12 @@ var $board = $('.board'),
         $.each(conf.ironThroneOrder, function (place, house) {
               htmlString += '<div class="token-' + house + ' pos-throne-' + place + '"></div>';
         });
-     
+
         // Fiefdom
         $.each(conf.fiefdomOrder, function (place, house) {
             htmlString += '<div class="token-' + house + ' pos-fiefdom-' + place + '"></div>';
         });
-        
+
         // King's Court
         $.each(conf.kingsCourtOrder, function (place, house) {
             htmlString += '<div class="token-' + house + ' pos-court-' + place + '"></div>';
@@ -121,18 +121,18 @@ var $board = $('.board'),
             });
         });
 
-        // $.each(conf.powertokens, function (house, count) {
-        //     htmlString += '<div class="tokenCounts-' + house + ' powertoken-' + house + '">';
-        //     // available Power Tokens
-        //     htmlString += '<div class="availablePowertokens">';
-        //     htmlString += count
-        //     htmlString += '</div>';
-        //     // left Power Tokens
-        //     htmlString += '<div class="leftPowertokens">';
-        //     htmlString += conf.max.powertokens - count;
-        //     htmlString += '</div>';
-        //     htmlString += '</div>';
-        // });
+        $.each(conf.powertokens, function (house, count) {
+            htmlString += '<div class="tokenCounts-' + house + ' powertoken-' + house + '">';
+            // available Power Tokens
+            htmlString += '<div class="availablePowertokens">';
+            htmlString += count
+            htmlString += '</div>';
+            // left Power Tokens
+            htmlString += '<div class="leftPowertokens">';
+            htmlString += conf.maxPowertokens - count;
+            htmlString += '</div>';
+            htmlString += '</div>';
+        });
 
         // housecard tracking
         // for(var house in conf.housecards) {
@@ -144,7 +144,7 @@ var $board = $('.board'),
         $(':not(input)', $board).remove();
         $(htmlString).appendTo($board);
     };
-  
+
 // inital setting of the board
 // try {
     var hash = location.hash;
@@ -171,6 +171,19 @@ $('.text-list').on('focusout', function (event) {
     currentConf[path] = list;
     location.hash = $.param(currentConf);
 
+});
+
+$('input[type=number]').bind('keyup mouseup', function (event) {
+    var path = $(this).data('path');
+    currentConf[path] = $(this).val();
+    location.hash = $.param(currentConf);
+});
+
+$('input[type=checkbox]').on('change', function (event) {
+    var value = $(this).is(":checked") ? true : false;
+    var path = $(this).data('path');
+    currentConf[path] = value;
+    location.hash = $.param(currentConf);
 });
 
 
