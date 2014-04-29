@@ -96,8 +96,12 @@ var $board = $('.board'),
             htmlString += '<div class="garrison pos-' + house + '" data-value="' + garrison + '"></div>';
         });
         // VSB and Raven token
-        htmlString += '<div class="vsb-token ' + (conf.vsbUsed ? 'used' : 'unused') + '"></div>';
-        htmlString += '<div class="raven-token ' + (conf.ravenUsed ? 'used' : 'unused') + '"></div>';
+        // conf.vsbUsed = true;
+        // console.log(conf.vsbUsed);
+        // console.log('<div class="vsb-token ' + (conf.vsbUsed ? 'used' : 'unused') + '"></div>');
+
+        htmlString += '<div data-path="vsbUsed" data-value="'+conf.vsbUsed+'" class="switch vsb-token ' + (conf.vsbUsed === "true" ? 'used' : 'unused') + '"></div>';
+        htmlString += '<div data-path="ravenUsed" data-value="'+conf.ravenUsed+'"  class="switch raven-token ' + (conf.ravenUsed === "true" ? 'used' : 'unused') + '"></div>';
         // Units
 
         $.each(conf.controlledLands, function (houseIndex, house) {
@@ -133,6 +137,9 @@ var $board = $('.board'),
             htmlString += '</div>';
             htmlString += '</div>';
         });
+
+
+        $('.maxPowertokens').val(conf.maxPowertokens);
 
         // housecard tracking
         // for(var house in conf.housecards) {
@@ -182,6 +189,20 @@ $('input[type=number]').bind('keyup mouseup', function (event) {
 $('input[type=checkbox]').on('change', function (event) {
     var value = $(this).is(":checked") ? true : false;
     var path = $(this).data('path');
+    currentConf[path] = value;
+    location.hash = $.param(currentConf);
+});
+
+$('body').on('click', '.switch', function (event) {
+    console.log($(this).data('value'));
+    console.log(!$(this).data('value'));
+
+    var value = !$(this).data('value');
+    var path = $(this).data('path');
+
+    console.log(value);
+    console.log(path);
+
     currentConf[path] = value;
     location.hash = $.param(currentConf);
 });
@@ -294,27 +315,27 @@ $(window).on('hashchange', function () {
 });
 // click listener for powertoken change
 $('body').on('click', function (e) {
-    var $target = $(e.target);
-    if ($target.hasClass('availablePowertokens')) {
-        e.preventDefault();
-        var $input = $('[name="available' + $target.parent().attr('class').replace(/.*powertoken-([^ ]*)/, 'Powertokens-\$1') + '"]');
-        $input.val($input.val() - 1)
-            .trigger('change');
-    } else if ($target.hasClass('leftPowertokens')) {
-        e.preventDefault();
-        var $input = $('[name="available' + $target.parent().attr('class').replace(/.*powertoken-([^ ]*)/, 'Powertokens-\$1') + '"]');
-        $input.val(+$input.val() + 1)
-            .trigger('change');
-    } else if ($target.hasClass('vsb-token')) {
-        e.preventDefault();
-        var $input = $('[name="vsb-used"]');
-        $input.attr('checked', !$target.hasClass('used'))
-            .trigger('change');
-    } else if ($target.hasClass('raven-token')) {
-        e.preventDefault();
-        var $input = $('[name="raven-used"]');
-        $input.attr('checked', !$target.hasClass('used'))
-            .trigger('change');
-    }
+    // var $target = $(e.target);
+    // if ($target.hasClass('availablePowertokens')) {
+    //     e.preventDefault();
+    //     var $input = $('[name="available' + $target.parent().attr('class').replace(/.*powertoken-([^ ]*)/, 'Powertokens-\$1') + '"]');
+    //     $input.val($input.val() - 1)
+    //         .trigger('change');
+    // } else if ($target.hasClass('leftPowertokens')) {
+    //     e.preventDefault();
+    //     var $input = $('[name="available' + $target.parent().attr('class').replace(/.*powertoken-([^ ]*)/, 'Powertokens-\$1') + '"]');
+    //     $input.val(+$input.val() + 1)
+    //         .trigger('change');
+    // } else if ($target.hasClass('vsb-token')) {
+    //     e.preventDefault();
+    //     var $input = $('[name="vsb-used"]');
+    //     $input.attr('checked', !$target.hasClass('used'))
+    //         .trigger('change');
+    // } else if ($target.hasClass('raven-token')) {
+    //     e.preventDefault();
+    //     var $input = $('[name="raven-used"]');
+    //     $input.attr('checked', !$target.hasClass('used'))
+    //         .trigger('change');
+    // }
 });
 });
