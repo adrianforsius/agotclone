@@ -35,6 +35,7 @@
         <label class="fullwidth">
             Iron Throne Order:
             <textarea class="list" name="ironThroneOrder" data-path="ironThroneOrder">Baratheon
+
 Lannister
 Stark
 Martell
@@ -65,25 +66,70 @@ Tyrell
 Greyjoy</textarea>
         </label>
         </div>
-        <label class="fullwidth">
-            Supply:
-            <textarea name="supply">Baratheon: 2
+            <!-- <textarea name="supply">Baratheon: 2
 Greyjoy: 2
 Lannister: 2
 Martell: 2
 Stark: 1
-Tyrell: 2</textarea>
-        </label>
-        <label class="fullwidth">
-            Victory:
-            <textarea name="victory">Baratheon: 1
-Greyjoy: 1
-Lannister: 1
-Martell: 1
-Stark: 2
-Tyrell: 1</textarea>
-        </label>
-        <label class="fullwidth">
+Tyrell: 2</textarea> -->
+    <div class="point-lists">
+        <div class="point-list">
+            <span class="header">supply</span>
+            <div class="value-box">
+                <p>baratheon</p>
+                <input type="text" value="2" class="baratheon-supply singleValue" data-path="supply" data-house="baratheon" />
+            </div>
+            <div class="value-box">
+                <p>greyjoy</p>
+                <input type="text" value="2" class="greyjoy-supply singleValue" data-path="supply" data-house="greyjoy"  />
+            </div>
+            <div class="value-box">
+                <p>lannister</p>
+                <input type="text" value="2" class="lannister-supply singleValue" data-path="supply" data-house="lannister"  />
+            </div>
+            <div class="value-box">
+                <p>martell</p>
+                <input type="text" value="2" class="martell-supply singleValue" data-path="supply" data-house="martell" />
+            </div>
+            <div class="value-box">
+                <p>stark</p>
+                <input type="text" value="1" class="stark-supply singleValue" data-path="supply" data-house="stark"  />
+            </div>
+            <div class="value-box">
+                <p>tyrell</p>
+                <input type="text" value="2" class="tyrell-supply singleValue" data-path="supply" data-house="tyrell" />
+            </div>
+        </div>
+               
+        <div class="point-list">
+            <span class="header">victory</span>
+             <div class="value-box">
+                <p>baratheon</p>
+                <input type="text" value="2" class="baratheon-victory singleValue" data-path="victory" data-house="baratheon" />
+            </div>
+            <div class="value-box">
+                <p>greyjoy</p>
+                <input type="text" value="2" class="greyjoy-victory singleValue" data-path="victory" data-house="greyjoy" />
+            </div>
+            <div class="value-box">
+                <p>lannister</p>
+                <input type="text" value="2" class="lannister-victory singleValue" data-path="victory" data-house="lannister" />
+            </div>
+            <div class="value-box">
+                <p>martell</p>
+                <input type="text" value="2" class="martell-victory singleValue" data-path="victory" data-house="martell" />
+            </div>
+            <div class="value-box">
+                <p>stark</p>
+                <input type="text" value="1" class="stark-victory singleValue" data-path="victory" data-house="stark" />
+            </div>
+            <div class="value-box">
+                <p>tyrell</p>
+                <input type="text" value="2" class="tyrell-victory singleValue" data-path="victory" data-house="tyrell" />
+            </div>
+        </div>
+    </div>
+    <label class="fullwidth">
             Garrisons:
             <textarea name="garrisons">King's Landing: 5
 The Eyrie: 6
@@ -93,6 +139,7 @@ Lannisport: 2
 Highgarden: 2
 Sunspear: 2
 Pyke: 2</textarea>
+
         </label>
         <label class="fullwidth">
             Wildlings: <input type="number" data-path="wildlings" step="2" min="0" max="12" value="2" name="wildlings"/>
@@ -150,25 +197,21 @@ Pyke: 2</textarea>
         </div>
         <div class="settings-container">
             <textarea name="orders-baratheon" class="hidden-orders" style="display: none"></textarea>
-            <label class="fullwidth">
-                Available Power Tokens:
-                <input name="availablePowertokens-baratheon" type="number" min="0" max="20" step="1" value="5"/>
-            </label>
         </div>
         <div class="housecards settings-container">
-    		<input type="checkbox" name="housecard-0-baratheon" id="housecard-0-baratheon">
+    		<input type="checkbox" data-house="baratheon" data-card="1" name="housecard-0-baratheon" id="housecard-0-baratheon">
             <label for="housecard-0-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534314_t.png"></label>
-            <input type="checkbox" name="housecard-1-baratheon" id="housecard-1-baratheon">
+            <input type="checkbox" data-house="baratheon" data-card="1" name="housecard-1-baratheon" id="housecard-1-baratheon">
             <label for="housecard-1-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534312_t.png"></label>
-            <input type="checkbox" name="housecard-2-baratheon" id="housecard-2-baratheon">
+            <input type="checkbox" data-house="baratheon" data-card="2" name="housecard-2-baratheon" id="housecard-2-baratheon">
             <label for="housecard-2-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534308_t.png"></label>
-            <input type="checkbox" name="housecard-3-baratheon" id="housecard-3-baratheon" checked="checked">
+            <input type="checkbox" data-house="baratheon" data-card="3" name="housecard-3-baratheon" id="housecard-3-baratheon" checked="checked">
             <label for="housecard-3-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534307_t.png"></label>
-            <input type="checkbox" name="housecard-4-baratheon" id="housecard-4-baratheon">
+            <input type="checkbox" data-house="baratheon" data-card="4" name="housecard-4-baratheon" id="housecard-4-baratheon">
             <label for="housecard-4-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534310_t.png"></label>
-            <input type="checkbox" name="housecard-5-baratheon" id="housecard-5-baratheon">
+            <input type="checkbox" data-house="baratheon" data-card="5" name="housecard-5-baratheon" id="housecard-5-baratheon">
             <label for="housecard-5-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534313_t.png"></label>
-            <input type="checkbox" name="housecard-6-baratheon" id="housecard-6-baratheon">
+            <input type="checkbox" data-house="baratheon" data-card="6" name="housecard-6-baratheon" id="housecard-6-baratheon">
             <label for="housecard-6-baratheon"><img src="http://cf.geekdo-images.com/images/pic1534311_t.png"></label>
         </div>
     </div>
@@ -187,25 +230,21 @@ Pyke: 2</textarea>
         </div>
         <div class="settings-container">
             <textarea name="orders-greyjoy" class="hidden-orders" style="display: none"></textarea>
-            <label class="fullwidth">
-                Available Power Tokens:
-                <input name="availablePowertokens-greyjoy" type="number" min="0" max="20" step="1" value="5"/>
-            </label>
         </div>
         <div class="housecards settings-container">
-    		 <input type="checkbox" name="housecard-0-greyjoy" id="housecard-0-greyjoy">
+    		 <input type="checkbox" data-house="greyjoy" data-card="0" name="housecard-0-greyjoy" id="housecard-0-greyjoy">
             <label for="housecard-0-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535247_t.png"></label>
-            <input type="checkbox" name="housecard-1-greyjoy" id="housecard-1-greyjoy">
+            <input type="checkbox" data-house="greyjoy" data-card="1" name="housecard-1-greyjoy" id="housecard-1-greyjoy">
             <label for="housecard-1-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535250_t.png"></label>
-            <input type="checkbox" name="housecard-2-greyjoy" id="housecard-2-greyjoy">
+            <input type="checkbox" data-house="greyjoy" data-card="2" name="housecard-2-greyjoy" id="housecard-2-greyjoy">
             <label for="housecard-2-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535244_t.png"></label>
-            <input type="checkbox" name="housecard-3-greyjoy" id="housecard-3-greyjoy">
+            <input type="checkbox" data-house="greyjoy" data-card="3" name="housecard-3-greyjoy" id="housecard-3-greyjoy">
             <label for="housecard-3-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535249_t.png"></label>
-            <input type="checkbox" name="housecard-4-greyjoy" id="housecard-4-greyjoy">
+            <input type="checkbox" data-house="greyjoy" data-card="4" name="housecard-4-greyjoy" id="housecard-4-greyjoy">
             <label for="housecard-4-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535246_t.png"></label>
-            <input type="checkbox" name="housecard-5-greyjoy" id="housecard-5-greyjoy">
+            <input type="checkbox" data-house="greyjoy" data-card="5" name="housecard-5-greyjoy" id="housecard-5-greyjoy">
             <label for="housecard-5-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535243_t.png"></label>
-            <input type="checkbox" name="housecard-6-greyjoy" id="housecard-6-greyjoy">
+            <input type="checkbox" data-house="greyjoy" data-card="6" name="housecard-6-greyjoy" id="housecard-6-greyjoy">
             <label for="housecard-6-greyjoy"><img src="http://cf.geekdo-images.com/images/pic1535241_t.png"></label>
         </div>
     </div>
@@ -224,25 +263,21 @@ Pyke: 2</textarea>
         </div>
         <div class="settings-container">
             <textarea name="orders-lannister" class="hidden-orders" style="display: none"></textarea>
-            <label class="fullwidth">
-                Available Power Tokens:
-                <input name="availablePowertokens-lannister" type="number" min="0" max="20" step="1" value="5"/>
-            </label>
         </div>
         <div class="housecards settings-container">
-    		 <input type="checkbox" name="housecard-0-lannister" id="housecard-0-lannister">
+    		 <input type="checkbox" data-house="lannister" data-card="0" name="housecard-0-lannister" id="housecard-0-lannister">
             <label for="housecard-0-lannister"><img src="http://cf.geekdo-images.com/images/pic1535259_t.png"></label>
-            <input type="checkbox" name="housecard-1-lannister" id="housecard-1-lannister">
+            <input type="checkbox" data-house="lannister" data-card="1" name="housecard-1-lannister" id="housecard-1-lannister">
             <label for="housecard-1-lannister"><img src="http://cf.geekdo-images.com/images/pic1535253_t.png"></label>
-            <input type="checkbox" name="housecard-2-lannister" id="housecard-2-lannister">
+            <input type="checkbox" data-house="lannister" data-card="2" name="housecard-2-lannister" id="housecard-2-lannister">
             <label for="housecard-2-lannister"><img src="http://cf.geekdo-images.com/images/pic1535254_t.png"></label>
-            <input type="checkbox" name="housecard-3-lannister" id="housecard-3-lannister">
+            <input type="checkbox" data-house="lannister" data-card="3" name="housecard-3-lannister" id="housecard-3-lannister">
             <label for="housecard-3-lannister"><img src="http://cf.geekdo-images.com/images/pic1535255_t.png"></label>
-            <input type="checkbox" name="housecard-4-lannister" id="housecard-4-lannister">
+            <input type="checkbox" data-house="lannister" data-card="4" name="housecard-4-lannister" id="housecard-4-lannister">
             <label for="housecard-4-lannister"><img src="http://cf.geekdo-images.com/images/pic1535256_t.png"></label>
-            <input type="checkbox" name="housecard-5-lannister" id="housecard-5-lannister">
+            <input type="checkbox" data-house="lannister" data-card="5" name="housecard-5-lannister" id="housecard-5-lannister">
             <label for="housecard-5-lannister"><img src="http://cf.geekdo-images.com/images/pic1535258_t.png"></label>
-            <input type="checkbox" name="housecard-6-lannister" id="housecard-6-lannister">
+            <input type="checkbox" data-house="lannister" data-card="6" name="housecard-6-lannister" id="housecard-6-lannister">
             <label for="housecard-6-lannister"><img src="http://cf.geekdo-images.com/images/pic1535251_t.png"></label>
         </div>
     </div>
@@ -261,25 +296,21 @@ Pyke: 2</textarea>
         </div>
         <div class="settings-container">
             <textarea name="orders-martell" class="hidden-orders" style="display: none"></textarea>
-            <label class="fullwidth">
-                Available Power Tokens:
-                <input name="availablePowertokens-martell" type="number" min="0" max="20" step="1" value="5"/>
-            </label>
         </div>
         <div class="housecards settings-container">
-    		 <input type="checkbox" name="housecard-0-martell" id="housecard-0-martell">
+    		 <input type="checkbox" data-house="martell" data-card="0" name="housecard-0-martell" id="housecard-0-martell">
             <label for="housecard-0-martell"><img src="http://cf.geekdo-images.com/images/pic1535266_t.png"></label>
-            <input type="checkbox" name="housecard-1-martell" id="housecard-1-martell">
+            <input type="checkbox" data-house="martell" data-card="1" name="housecard-1-martell" id="housecard-1-martell">
             <label for="housecard-1-martell"><img src="http://cf.geekdo-images.com/images/pic1535260_t.png"></label>
-            <input type="checkbox" name="housecard-2-martell" id="housecard-2-martell" checked="checked">
+            <input type="checkbox" data-house="martell" data-card="2" name="housecard-2-martell" id="housecard-2-martell" checked="checked">
             <label for="housecard-2-martell"><img src="http://cf.geekdo-images.com/images/pic1535262_t.png"></label>
-            <input type="checkbox" name="housecard-3-martell" id="housecard-3-martell">
+            <input type="checkbox" data-house="martell" data-card="3" name="housecard-3-martell" id="housecard-3-martell">
             <label for="housecard-3-martell"><img src="http://cf.geekdo-images.com/images/pic1535265_t.png"></label>
-            <input type="checkbox" name="housecard-4-martell" id="housecard-4-martell">
+            <input type="checkbox" data-house="martell" data-card="4" name="housecard-4-martell" id="housecard-4-martell">
             <label for="housecard-4-martell"><img src="http://cf.geekdo-images.com/images/pic1535264_t.png"></label>
-            <input type="checkbox" name="housecard-5-martell" id="housecard-5-martell" checked="checked">
+            <input type="checkbox" data-house="martell" data-card="5" name="housecard-5-martell" id="housecard-5-martell" checked="checked">
             <label for="housecard-5-martell"><img src="http://cf.geekdo-images.com/images/pic1535261_t.png"></label>
-            <input type="checkbox" name="housecard-6-martell" id="housecard-6-martell">
+            <input type="checkbox" data-house="martell" data-card="6" name="housecard-6-martell" id="housecard-6-martell">
             <label for="housecard-6-martell"><img src="http://cf.geekdo-images.com/images/pic1535263_t.png"></label>
         </div>
     </div>
@@ -298,25 +329,21 @@ Pyke: 2</textarea>
         </div>
         <div class="settings-container">
             <textarea name="orders-stark" class="hidden-orders" style="display: none"></textarea>
-            <label class="fullwidth">
-                Available Power Tokens:
-                <input name="availablePowertokens-stark" type="number" min="0" max="20" step="1" value="5"/>
-            </label>
         </div>
         <div class="housecards settings-container">
-    		 <input type="checkbox" name="housecard-0-stark" id="housecard-0-stark">
+    		 <input type="checkbox" data-house="stark" data-card="0" name="housecard-0-stark" id="housecard-0-stark">
             <label for="housecard-0-stark"><img src="http://cf.geekdo-images.com/images/pic1535269_t.png"></label>
-            <input type="checkbox" name="housecard-1-stark" id="housecard-1-stark">
+            <input type="checkbox" data-house="stark" data-card="1" name="housecard-1-stark" id="housecard-1-stark">
             <label for="housecard-1-stark"><img src="http://cf.geekdo-images.com/images/pic1535271_t.png"></label>
-            <input type="checkbox" name="housecard-2-stark" id="housecard-2-stark">
+            <input type="checkbox" data-house="stark" data-card="2" name="housecard-2-stark" id="housecard-2-stark">
             <label for="housecard-2-stark"><img src="http://cf.geekdo-images.com/images/pic1535273_t.png"></label>
-            <input type="checkbox" name="housecard-3-stark" id="housecard-3-stark">
+            <input type="checkbox" data-house="stark" data-card="3" name="housecard-3-stark" id="housecard-3-stark">
             <label for="housecard-3-stark"><img src="http://cf.geekdo-images.com/images/pic1535270_t.png"></label>
-            <input type="checkbox" name="housecard-4-stark" id="housecard-4-stark">
+            <input type="checkbox" data-house="stark" data-card="4" name="housecard-4-stark" id="housecard-4-stark">
             <label for="housecard-4-stark"><img src="http://cf.geekdo-images.com/images/pic1535272_t.png"></label>
-            <input type="checkbox" name="housecard-5-stark" id="housecard-5-stark">
+            <input type="checkbox" data-house="stark" data-card="5" name="housecard-5-stark" id="housecard-5-stark">
             <label for="housecard-5-stark"><img src="http://cf.geekdo-images.com/images/pic1535267_t.png"></label>
-            <input type="checkbox" name="housecard-6-stark" id="housecard-6-stark">
+            <input type="checkbox" data-house="stark" data-card="6" name="housecard-6-stark" id="housecard-6-stark">
             <label for="housecard-6-stark"><img src="http://cf.geekdo-images.com/images/pic1535268_t.png"></label>
         </div>
     </div>
@@ -335,10 +362,6 @@ Pyke: 2</textarea>
         </div>
         <div class="settings-container">
             <textarea name="orders-tyrell" class="hidden-orders" style="display: none"></textarea>
-            <label class="fullwidth">
-                Available Power Tokens:
-                <input name="availablePowertokens-tyrell" type="number" min="0" max="20" step="1" value="5"/>
-            </label>
         </div>
         <div class="housecards settings-container">
     		<input type="checkbox" data-house="tyrell" data-card="0" name="housecard-0-tyrell" id="housecard-0-tyrell">

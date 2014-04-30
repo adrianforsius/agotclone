@@ -326,8 +326,19 @@ $('body').on('click','.leftPowertokens', function (e) {
 $('.housecards').on('click', 'input', function (event) {
     var house = $(this).data('house');
     var card = $(this).data('card');
+
     var used = (currentConf.housecards[house][card].used === 'true');
     currentConf.housecards[house][card].used = !used;
+    location.hash = $.param(currentConf);
+});
+$('.singleValue').on('change', function (element) {
+    var path = $(this).data('path');
+    var house = $(this).data('house');
+
+    var value = $(this).val();
+    
+    if(!$.isNumeric(value) && value < 0 && value > 6) return false;
+    currentConf[path][house] = $(this).val();
     location.hash = $.param(currentConf);
 });
 

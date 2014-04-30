@@ -334,6 +334,159 @@ currentConf = {
                 'swords': 0,
                 'towers': 0,
                 'used': false
+            }
+        ],
+        'baratheon': [
+            {
+                'name': 'Stannis Baratheon',
+                'combat': 4,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Renly Baratheon',
+                'combat': 3,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Ser Davos Seaworth',
+                'combat': 2,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Brienne of Tarth',
+                'combat': 2,
+                'swords': 1,
+                'towers': 1,
+                'used': false
+            },
+            {
+                'name': 'Melisandre',
+                'combat': 1,
+                'swords': 1,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Salladhor Saan',
+                'combat': 1,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Patchface',
+                'combat': 0,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+        ],
+        'lannister': [
+            {
+                'name': 'Tywin Lannister',
+                'combat': 4,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Ser Gregor Clegane',
+                'combat': 3,
+                'swords': 3,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'The Hound',
+                'combat': 2,
+                'swords': 0,
+                'towers': 2,
+                'used': false
+            },
+            {
+                'name': 'Ser Jaime Lannister',
+                'combat': 2,
+                'swords': 1,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Tyrion Lannister',
+                'combat': 1,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Ser Kevan Lannister',
+                'combat': 1,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Cersei Lannister',
+                'combat': 0,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+        ],
+        'greyjoy': [
+            {
+                'name': 'Euron Crows Eye',
+                'combat': 4,
+                'swords': 1,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Victarion Greyjoy',
+                'combat': 3,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Theon Greyjoy',
+                'combat': 2,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Balon Greyjoy',
+                'combat': 2,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Asha Greyjoy',
+                'combat': 1,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Dagmar Cleftjaw',
+                'combat': 1,
+                'swords': 1,
+                'towers': 1,
+                'used': false
+            },
+            {
+                'name': 'Aeron Damphair',
+                'combat': 0,
+                'swords': 0,
+                'towers': 0,
+                'used': false
             },
         ]
     },

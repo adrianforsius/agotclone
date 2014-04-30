@@ -1395,3 +1395,32 @@ input[type="checkbox"][name^="housecard-"]:checked + label {
 .settings-orders{
     float: left;
 }
+.singleValue{
+    width: 20px;
+}
+.value-box, .value-box p, .value-box input
+{
+    float: left;
+}
+.value-box p{
+    margin-top: 5px;
+    right: 10px;
+}
+.point-list {
+    float: left;
+    clear: both;
+}
+.point-list p {
+    margin: 5px;
+}
+.point-list .header{
+    float: left;
+    margin-right: 10px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.point-lists{
+    height: 60px;
+    width: 100%;
+    float: left;
+}
