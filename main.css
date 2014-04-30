@@ -1202,7 +1202,7 @@ q:before, q:after { content: ""; content: none; }
     -moz-transition: all .5s ease;
     -o-transition: all .5s ease;
     transition: all .5s ease;
-    height: 10%;
+    height: 50px;
     color: #fff;
     overflow: auto;
 
