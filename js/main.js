@@ -9,9 +9,9 @@ var $board = $('.board'),
         for (var i = 0; i < charCnt; i += 1) {
             string += characters[Math.floor(Math.random() * characters.length)];
         }
-        // uri = 'http://tinyurl.com/create.php?source=indexpage&url=' + encodeURIComponent(href) + '&alias=' + string;
-        // $('body').append('<img src="' + uri + '" style="height: 1px; width: 1px; position: absolute; z-index: -999; opacity: 0;" />');
-        // $('#shortlink').html('http://tinyurl.com/' + string);
+        uri = 'http://tinyurl.com/create.php?source=indexpage&url=' + encodeURIComponent(href) + '&alias=' + string;
+        $('body').append('<img src="' + uri + '" style="height: 1px; width: 1px; position: absolute; z-index: -999; opacity: 0;" />');
+        $('#shortlink').html('http://tinyurl.com/' + string);
     },
     setBoard = function (conf) {
         console.log('set board');
