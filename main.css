@@ -1376,14 +1376,14 @@ input[type="checkbox"][name^="housecard-"]:checked + label {
     margin: 0;
     padding: 0;
 }
-.unit .remove{
+/*.unit .remove{
     height: 10px;
     width: 10px;
     background: #FFF;
     position: absolute;
     top: 20px;
     left: 20px;
-}
+}*/
 .order{
     float: left;
     width: 130px;
@@ -1391,4 +1391,7 @@ input[type="checkbox"][name^="housecard-"]:checked + label {
 .settings-container .orders
 {
     height: 50px;
+}
+.settings-orders{
+    float: left;
 }

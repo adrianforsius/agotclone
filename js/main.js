@@ -138,16 +138,17 @@ var $board = $('.board'),
             htmlString += '</div>';
         });
 
+        $.each(conf.housecards, function (houseIndex, house) {
+            $.each(house, function (cardIndex, card) {
+                if(card.used == 'true') {
+                    $('input[name="housecard-' + cardIndex + '-' + houseIndex + '"]').attr('checked', true);
+                }
+            });
+        });
 
         $('.maxPowertokens').val(conf.maxPowertokens);
 
-        // housecard tracking
-        // for(var house in conf.housecards) {
-        //     var housecards = conf.housecards[house].split('\n');
-        //     for (var i = 0; i < housecards.length; i += 1) {
-        //         $('[name="housecard-' + i + '-' + house + '"] + label').html(housecards[i]);
-        //     }
-        // }
+
         $(':not(input)', $board).remove();
         $(htmlString).appendTo($board);
     };
@@ -194,14 +195,8 @@ $('input[type=checkbox]').on('change', function (event) {
 });
 
 $('body').on('click', '.switch', function (event) {
-    console.log($(this).data('value'));
-    console.log(!$(this).data('value'));
-
     var value = !$(this).data('value');
     var path = $(this).data('path');
-
-    console.log(value);
-    console.log(path);
 
     currentConf[path] = value;
     location.hash = $.param(currentConf);
@@ -225,15 +220,13 @@ $('.settings-container').on('change', '.token', function (event) {
 
 });
 
-$('body').on('click', '.unit .remove', function (element) {
-    var house = $(this).parent().data('house');
-    var unit = $(this).parent().data('unit');
-    var land = $(this).parent().data('land');
+$('body').on('click', '.unit', function (element) {
+    var house = $(this).data('house');
+    var unit = $(this).data('unit');
+    var land = $(this).data('land');
 
     $.each(currentConf.controlledLands, function (houseIndex, house) {
         for(var i = house.length-1; i >= 0; i -= 1) {
-            console.log(house.length);
-            console.log(house);
 
             if(house[i].land === land) {
                 house[i].units[unit]--;
@@ -324,6 +317,14 @@ $('body').on('click','.leftPowertokens', function (e) {
     var house = $(this).data('house');
     var tokens = $(this).data('tokens');
     currentConf.powertokens[house] = tokens-1;
+    location.hash = $.param(currentConf);
+});
+
+$('.housecards').on('click', 'input', function (event) {
+    var house = $(this).data('house');
+    var card = $(this).data('card');
+    var used = (currentConf.housecards[house][card].used === 'true');
+    currentConf.housecards[house][card].used = !used;
     location.hash = $.param(currentConf);
 });
 

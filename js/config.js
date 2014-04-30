@@ -181,6 +181,61 @@ currentConf = {
             'support-2': '0',
         },
     },
+    'housecards' :
+    {
+        'tyrell': [
+            {
+                'name': 'Mace Tyrell',
+                'combat': 4,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Ser Loras Tyrell',
+                'combat': 3,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Ser Garlan Tyrell',
+                'combat': 2,
+                'swords': 2,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Randyll Tarly',
+                'combat': 2,
+                'swords': 1,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Alester Florent',
+                'combat': 2,
+                'swords': 0,
+                'towers': 1,
+                'used': false
+            },
+            {
+                'name': 'Margaery Tyrell',
+                'combat': 1,
+                'swords': 0,
+                'towers': 1,
+                'used': false
+            },
+            {
+                'name': 'Queen of Thorns',
+                'combat': 0,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+          
+        ]
+    },
     'controlledLands':
     {
         'tyrell':
