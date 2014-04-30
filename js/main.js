@@ -128,11 +128,11 @@ var $board = $('.board'),
         $.each(conf.powertokens, function (house, count) {
             htmlString += '<div class="tokenCounts-' + house + ' powertoken-' + house + '">';
             // available Power Tokens
-            htmlString += '<div class="availablePowertokens">';
+            htmlString += '<div class="availablePowertokens" data-house="'+ house + '" data-tokens="'+count+'">';
             htmlString += count
             htmlString += '</div>';
             // left Power Tokens
-            htmlString += '<div class="leftPowertokens">';
+            htmlString += '<div class="leftPowertokens" data-house="'+ house + '" data-tokens="'+count+'">';
             htmlString += conf.maxPowertokens - count;
             htmlString += '</div>';
             htmlString += '</div>';
@@ -314,12 +314,25 @@ $(window).on('hashchange', function () {
     setShortLink(location.href);
 });
 // click listener for powertoken change
-$('body').on('click', function (e) {
+$('body').on('click', '.availablePowertokens', function (e) {
+    var house = $(this).data('house');
+    var tokens = $(this).data('tokens');
+    currentConf.powertokens[house] = tokens+1;
+    location.hash = $.param(currentConf);
+});
+$('body').on('click','.leftPowertokens', function (e) {
+    var house = $(this).data('house');
+    var tokens = $(this).data('tokens');
+    currentConf.powertokens[house] = tokens-1;
+    location.hash = $.param(currentConf);
+});
+
+
     // var $target = $(e.target);
     // if ($target.hasClass('availablePowertokens')) {
-    //     e.preventDefault();
-    //     var $input = $('[name="available' + $target.parent().attr('class').replace(/.*powertoken-([^ ]*)/, 'Powertokens-\$1') + '"]');
-    //     $input.val($input.val() - 1)
+        // e.preventDefault();
+        // var $input = $('[name="available' + $target.parent().attr('class').replace(/.*powertoken-([^ ]*)/, 'Powertokens-\$1') + '"]');
+        // $input.val($input.val() - 1)
     //         .trigger('change');
     // } else if ($target.hasClass('leftPowertokens')) {
     //     e.preventDefault();
@@ -337,5 +350,4 @@ $('body').on('click', function (e) {
     //     $input.attr('checked', !$target.hasClass('used'))
     //         .trigger('change');
     // }
-});
 });
