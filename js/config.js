@@ -284,7 +284,57 @@ currentConf = {
                 'towers': 0,
                 'used': false
             },
-          
+        ],
+        'martell': [
+            {
+                'name': 'The Red Viper',
+                'combat': 4,
+                'swords': 2,
+                'towers': 1,
+                'used': false
+            },
+            {
+                'name': 'Areo Hotah',
+                'combat': 3,
+                'swords': 0,
+                'towers': 1,
+                'used': false
+            },
+            {
+                'name': 'Obara Sand',
+                'combat': 2,
+                'swords': 1,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Darkstar',
+                'combat': 2,
+                'swords': 1,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Nymeria Sand',
+                'combat': 1,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Arianne Martell',
+                'combat': 1,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Doran Martell',
+                'combat': 0,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
         ]
     },
     'controlledLands':
@@ -414,10 +464,119 @@ currentConf = {
                     'powertoken': 0
                 }
             },
+        ],
+        'martell': [
+            {
+                'land': 'sunspear',
+                'order': false,
+                'units':
+                {
+                    'knight': 1,
+                    'footman': 1,
+                    'ship': 0,
+                    'powertoken': 0
+                }
+            },
+            {
+
+                'land': 'saltshore',
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 1,
+                    'ship': 0,
+                    'powertoken': 0
+                }
+            },
+            {
+
+                'land': 'eastsummersea',
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 0,
+                    'ship': 1,
+                    'powertoken': 0
+                }
+            }
+        ],
+        'lannister' : [
+            {
+                'land': 'lannisport',
+                'order': false,
+                'units':
+                {
+                    'knight': 1,
+                    'footman': 1,
+                    'ship': 0,
+                    'powertoken': 0
+                }
+            },
+            {
+
+                'land': 'stoneysept',
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 1,
+                    'ship': 0,
+                    'powertoken': 0
+                }
+            },
+            {
+
+                'land': 'goldensound',
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 0,
+                    'ship': 1,
+                    'powertoken': 0
+                }
+            }
+        ],
+        'baratheon' : 
+        [
+            {
+                'land': 'dragonstone',
+                'order': false,
+                'units':
+                {
+                    'knight': 1,
+                    'footman': 1,
+                    'ship': 0,
+                    'powertoken': 0
+                }
+            },
+            {
+
+                'land': 'kingswood',
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 1,
+                    'ship': 0,
+                    'powertoken': 0
+                }
+            },
+            {
+
+                'land': 'shipbreakerbay',
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 0,
+                    'ship': 2,
+                    'powertoken': 0
+                }
+            }
         ]
-        // 'lannister' : undefined,
-        // 'martell' : undefined,
-        // 'baratheon' : undefined
     },
     'lands':
     [
