@@ -17,50 +17,53 @@ var $board = $('.board'),
         console.log('set board');
         var value,
             htmlString = '';
-        if(conf.controlledLands.tyrell !== undefined) {
-            var orderHtml = '';
+        $.each(conf.ironThroneOrder, function (index, house) {
 
-            $.each(conf.orders.tyrell, function (orderToken, orderLand) {
-                orderHtml += '<div class="ordera-select-' + orderToken + ' order">';
-                orderHtml += '<label>'+conf.orderTokens[orderToken] +'</label>';
-                orderHtml += '<select name="tyrell-order-token" data-house="tyrell" data-token="'+orderToken+'" class="token">';
-                orderHtml += '<option value="">---</option>';
+            if(conf.controlledLands[house] !== undefined) {
+                var orderHtml = '';
 
-                $.each(conf.controlledLands.tyrell, function (landIndex, landName) {
-                    if(landName !== undefined) {
-                        var selected = '';
-                        if(orderLand === landName.land) {
-                            selected = 'selected';
+                $.each(conf.orders[house], function (orderToken, orderLand) {
+                    orderHtml += '<div class="ordera-select-' + orderToken + ' order">';
+                    orderHtml += '<label>'+conf.orderTokens[orderToken] +'</label>';
+                    orderHtml += '<select name="'+ house +'-order-token" data-house="'+ house +'" data-token="'+orderToken+'" class="token">';
+                    orderHtml += '<option value="">---</option>';
+
+                    $.each(conf.controlledLands[house], function (landIndex, landName) {
+                        if(landName !== undefined) {
+                            var selected = '';
+                            if(orderLand === landName.land) {
+                                selected = 'selected';
+                            }
+                            orderHtml += '<option value="'+ landName.land +'" ' + selected + '>'+ landName.land +'</option>';
                         }
-                        orderHtml += '<option value="'+ landName.land +'" ' + selected + '>'+ landName.land +'</option>';
-                    }
+                    });
+                    orderHtml += '</select>';
+                    orderHtml += '</div>';
                 });
-                orderHtml += '</select>';
-                orderHtml += '</div>';
+            }
+            $('.'+ house +'-controls .orders').html(orderHtml);
+             var unitHtml = '';
+            //sort
+            conf.lands.sort(function(a, b) {
+                var textA = a.land.toUpperCase();
+                var textB = b.land.toUpperCase();
+                return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
             });
-        }
-        $('.tyrell-controls .orders').html(orderHtml);
 
 
-        var unitHtml = '';
-        //sort
-        conf.lands.sort(function(a, b) {
-            var textA = a.land.toUpperCase();
-            var textB = b.land.toUpperCase();
-            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+            unitHtml += '<select name="'+house+'-new-unit-land" class="land"><option value="">---</option>';
+            $.each(conf.lands, function (landIndex, land){
+                unitHtml += '<option value="'+ land.land +'">'+ land.land +'</option>';
+            });
+            unitHtml += '</select>';
+            unitHtml += '<select name="'+house+'-new-unit-rank" class="unitRank"><option value="">---</option>';
+            $.each(conf.units, function (unit, value) {
+                unitHtml += '<option value="'+ unit +'">'+ unit +'</option>';
+            });
+            unitHtml += '</select>';
+            $('.'+house+'-controls .newUnit').html(unitHtml);
         });
 
-        unitHtml += '<select name="tyrell-new-unit-land" class="land"><option value="">---</option>';
-        $.each(conf.lands, function (landIndex, land){
-            unitHtml += '<option value="'+ land.land +'">'+ land.land +'</option>';
-        });
-        unitHtml += '</select>';
-        unitHtml += '<select name="tyrell-new-unit-rank" class="unitRank"><option value="">---</option>';
-        $.each(conf.units, function (unit, value) {
-            unitHtml += '<option value="'+ unit +'">'+ unit +'</option>';
-        });
-        unitHtml += '</select>';
-        $('.tyrell-controls .newUnit').html(unitHtml);
 
 
         // wildling token

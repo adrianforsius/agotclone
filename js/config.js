@@ -233,6 +233,57 @@ currentConf = {
                 'towers': 0,
                 'used': false
             },
+        ],
+        'stark': [
+            {
+                'name': 'Eddard Stark',
+                'combat': 4,
+                'swords': 2,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Robb Stark',
+                'combat': 3,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Roose Bolton',
+                'combat': 2,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Greatjon Umber',
+                'combat': 2,
+                'swords': 1,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Ser Rodrick Cassel',
+                'combat': 1,
+                'swords': 0,
+                'towers': 2,
+                'used': false
+            },
+            {
+                'name': 'The Blackfish',
+                'combat': 1,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
+            {
+                'name': 'Catelyn Stark',
+                'combat': 0,
+                'swords': 0,
+                'towers': 0,
+                'used': false
+            },
           
         ]
     },
@@ -326,9 +377,46 @@ currentConf = {
                 }
             }
         ],
+        'stark': [
+            {
+
+                'land': 'winterfell',
+                'order': false,
+                'units':
+                {
+                    'knight': 2,
+                    'footman': 1,
+                    'ship': 0,
+                    'powertoken': 0
+                }
+            },
+            {
+
+                'land': 'whiteharbor',
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 1,
+                    'ship': 0,
+                    'powertoken': 0
+                }
+            },
+            {
+
+                'land': 'shiveringsea',
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 0,
+                    'ship': 1,
+                    'powertoken': 0
+                }
+            },
+        ]
         // 'lannister' : undefined,
         // 'martell' : undefined,
-        // 'stark' : undefined,
         // 'baratheon' : undefined
     },
     'lands':

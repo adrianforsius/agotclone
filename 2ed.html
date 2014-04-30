@@ -277,39 +277,41 @@ Sea of Dorne: Ship</textarea>
         <label for="housecard-6-martell"><img src="http://cf.geekdo-images.com/images/pic1535263_t.png"></label>
     </div>
     <input type="radio" name="navContentControl" id="starkStuff"/>
-    <div class="navContent">
-        <label class="fullwidth">
-            Units:
-            <textarea name="units-stark">Winterfell: Footman, Knight
-White Harbor: Footman
-The Shivering Sea: Ship</textarea>
-        </label>
-        <label class="fullwidth">
-            Orders:
-            <textarea name="orders-stark"></textarea>
-        </label>
-        <label class="fullwidth">
-            Powertokens in Areas:
-            <textarea name="powertokens-stark"></textarea>
-        </label>
-        <label class="fullwidth">
-            Available Power Tokens:
-            <input name="availablePowertokens-stark" type="number" min="0" max="20" step="1" value="5"/>
-        </label>
-		 <input type="checkbox" name="housecard-0-stark" id="housecard-0-stark">
-        <label for="housecard-0-stark"><img src="http://cf.geekdo-images.com/images/pic1535269_t.png"></label>
-        <input type="checkbox" name="housecard-1-stark" id="housecard-1-stark">
-        <label for="housecard-1-stark"><img src="http://cf.geekdo-images.com/images/pic1535271_t.png"></label>
-        <input type="checkbox" name="housecard-2-stark" id="housecard-2-stark">
-        <label for="housecard-2-stark"><img src="http://cf.geekdo-images.com/images/pic1535273_t.png"></label>
-        <input type="checkbox" name="housecard-3-stark" id="housecard-3-stark">
-        <label for="housecard-3-stark"><img src="http://cf.geekdo-images.com/images/pic1535270_t.png"></label>
-        <input type="checkbox" name="housecard-4-stark" id="housecard-4-stark">
-        <label for="housecard-4-stark"><img src="http://cf.geekdo-images.com/images/pic1535272_t.png"></label>
-        <input type="checkbox" name="housecard-5-stark" id="housecard-5-stark">
-        <label for="housecard-5-stark"><img src="http://cf.geekdo-images.com/images/pic1535267_t.png"></label>
-        <input type="checkbox" name="housecard-6-stark" id="housecard-6-stark">
-        <label for="housecard-6-stark"><img src="http://cf.geekdo-images.com/images/pic1535268_t.png"></label>
+    <div class="navContent stark-controls house-controls" data-house="stark">
+        <div class="settings-container settings-orders">
+            <h5>Orders:</h5>
+            <div class="orders">
+            </div>
+        </div>
+        <div class="settings-container">
+            <h5>Units:</h5>
+            <div class="newUnit">
+            </div>
+            <button class="placeUnit">Place unit</button>
+        </div>
+        <div class="settings-container">
+            <textarea name="orders-stark" class="hidden-orders" style="display: none"></textarea>
+            <label class="fullwidth">
+                Available Power Tokens:
+                <input name="availablePowertokens-stark" type="number" min="0" max="20" step="1" value="5"/>
+            </label>
+        </div>
+        <div class="housecards settings-container">
+    		 <input type="checkbox" name="housecard-0-stark" id="housecard-0-stark">
+            <label for="housecard-0-stark"><img src="http://cf.geekdo-images.com/images/pic1535269_t.png"></label>
+            <input type="checkbox" name="housecard-1-stark" id="housecard-1-stark">
+            <label for="housecard-1-stark"><img src="http://cf.geekdo-images.com/images/pic1535271_t.png"></label>
+            <input type="checkbox" name="housecard-2-stark" id="housecard-2-stark">
+            <label for="housecard-2-stark"><img src="http://cf.geekdo-images.com/images/pic1535273_t.png"></label>
+            <input type="checkbox" name="housecard-3-stark" id="housecard-3-stark">
+            <label for="housecard-3-stark"><img src="http://cf.geekdo-images.com/images/pic1535270_t.png"></label>
+            <input type="checkbox" name="housecard-4-stark" id="housecard-4-stark">
+            <label for="housecard-4-stark"><img src="http://cf.geekdo-images.com/images/pic1535272_t.png"></label>
+            <input type="checkbox" name="housecard-5-stark" id="housecard-5-stark">
+            <label for="housecard-5-stark"><img src="http://cf.geekdo-images.com/images/pic1535267_t.png"></label>
+            <input type="checkbox" name="housecard-6-stark" id="housecard-6-stark">
+            <label for="housecard-6-stark"><img src="http://cf.geekdo-images.com/images/pic1535268_t.png"></label>
+        </div>
     </div>
     <input type="radio" name="navContentControl" id="tyrellStuff"/>
     <div class="navContent tyrell-controls house-controls" data-house="tyrell">
