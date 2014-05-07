@@ -2,16 +2,15 @@ $(function(){
 
 var $board = $('.board'),
     setShortLink = function (href) {
-        var characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
-            string = '',
-            charCnt = 20,
-            uri;
-        for (var i = 0; i < charCnt; i += 1) {
-            string += characters[Math.floor(Math.random() * characters.length)];
-        }
-        uri = 'http://tinyurl.com/create.php?source=indexpage&url=' + encodeURIComponent(href) + '&alias=' + string;
-        $('body').append('<img src="' + uri + '" style="height: 1px; width: 1px; position: absolute; z-index: -999; opacity: 0;" />');
-        $('#shortlink').html('http://tinyurl.com/' + string);
+        $.ajax({
+            type: "GET",
+            url: "http://tinyurl.com/api-create.php?url="+href,
+            dataType: "jsonp",
+            success: function (shorturl) {
+                console.log(shorturl);
+                 $('#shortlink').html(shorturl);
+            }
+        });
     },
     setBoard = function (conf) {
         console.log(conf);
@@ -156,216 +155,193 @@ var $board = $('.board'),
         $(htmlString).appendTo($board);
     };
 
-// inital setting of the board
-// try {
-    var hash = location.hash;
-    if (hash.indexOf('#') === 0) {
-        hash = hash.substr(1);
-        currentConf = $.deparam(hash);
-    }
-    setBoard(currentConf);
-// } catch (e) {
-//     console.log(e);
-// };
-
-//Text list
-$('.text-list').on('focusout', function (event) {
-    var itemList = $(event.delegateTarget).find('.list');
-    var items = itemList.val().split('\n');
-    var path = itemList.data('path');
-
-    var list = {};
-    $.each(items, function (index, item) {
-        list[index+1] = item.toLowerCase();
-    });
-
-    currentConf[path] = list;
-    location.hash = $.param(currentConf);
-
-});
-
-$('input[type=number]').bind('keyup mouseup', function (event) {
-    var path = $(this).data('path');
-    currentConf[path] = $(this).val();
-    location.hash = $.param(currentConf);
-});
-
-$('input[type=checkbox]').on('change', function (event) {
-    var value = $(this).is(":checked") ? true : false;
-    var path = $(this).data('path');
-    currentConf[path] = value;
-    location.hash = $.param(currentConf);
-});
-
-$('body').on('click', '.switch', function (event) {
-    var value = !$(this).data('value');
-    var path = $(this).data('path');
-
-    currentConf[path] = value;
-    location.hash = $.param(currentConf);
-});
-
-
-//Limited add
-$('.settings-container').on('change', '.token', function (event) {
-    // console.log(event);
-    var land = event.target.value;
-    var token = $(event.currentTarget).data('token');
-    var house = $(event.currentTarget).data('house');
-
-    $.each(currentConf.orders[house], function (tokenName, landName) {
-        if(land == landName) {
-            currentConf.orders[house][tokenName] = 0;
+    // inital setting of the board
+    // try {
+        var hash = location.hash;
+        if (hash.indexOf('#') === 0) {
+            hash = hash.substr(1);
+            currentConf = $.deparam(hash);
         }
+        setBoard(currentConf);
+    // } catch (e) {
+    //     console.log(e);
+    // };
+
+    //Text list
+    $('.text-list').on('focusout', function (event) {
+        var itemList = $(event.delegateTarget).find('.list');
+        var items = itemList.val().split('\n');
+        var path = itemList.data('path');
+
+        var list = {};
+        $.each(items, function (index, item) {
+            list[index+1] = item.toLowerCase();
+        });
+
+        currentConf[path] = list;
+        location.hash = $.param(currentConf);
+
     });
-    currentConf.orders[house][token] = land;
-    location.hash = $.param(currentConf);
 
-});
+    $('input[type=number]').bind('keyup mouseup', function (event) {
+        var path = $(this).data('path');
+        currentConf[path] = $(this).val();
+        location.hash = $.param(currentConf);
+    });
 
-$('body').on('click', '.unit', function (element) {
-    var house = $(this).data('house');
-    var unit = $(this).data('unit');
-    var land = $(this).data('land');
+    $('input[type=checkbox]').on('change', function (event) {
+        var value = $(this).is(":checked") ? true : false;
+        var path = $(this).data('path');
+        currentConf[path] = value;
+        location.hash = $.param(currentConf);
+    });
 
-    $.each(currentConf.controlledLands, function (landHouseIndex, landHouse) {
-        for(var i = landHouse.length-1; i >= 0; i -= 1) {
+    $('body').on('click', '.switch', function (event) {
+        var value = !$(this).data('value');
+        var path = $(this).data('path');
 
-            if(landHouse[i].land === land) {
-                landHouse[i].units[unit]--;
+        currentConf[path] = value;
+        location.hash = $.param(currentConf);
+    });
+
+
+    //Limited add
+    $('.settings-container').on('change', '.token', function (event) {
+        // console.log(event);
+        var land = event.target.value;
+        var token = $(event.currentTarget).data('token');
+        var house = $(event.currentTarget).data('house');
+
+        $.each(currentConf.orders[house], function (tokenName, landName) {
+            if(land == landName) {
+                currentConf.orders[house][tokenName] = 0;
             }
-            var units = 0;
-            $.each(currentConf.controlledLands[landHouseIndex][i].units, function (unitIndex, unit) {
-               units += unit;
-            });
+        });
+        currentConf.orders[house][token] = land;
+        location.hash = $.param(currentConf);
 
-            if(units <= 0) {
-                currentConf.controlledLands[landHouseIndex].splice(i, 1);
-            }
-        };
     });
 
-    location.hash = $.param(currentConf);
-});
+    $('body').on('click', '.unit', function (element) {
+        var house = $(this).data('house');
+        var unit = $(this).data('unit');
+        var land = $(this).data('land');
 
-//Unlimited add
-$('.navContent').on('click', '.placeUnit', function (event) {
-    var unitRank = $(event.delegateTarget).find('.newUnit .unitRank').val();
-    var land = $(event.delegateTarget).find('.newUnit .land').val();
+        $.each(currentConf.controlledLands, function (landHouseIndex, landHouse) {
+            for(var i = landHouse.length-1; i >= 0; i -= 1) {
 
-    var house = $(event.delegateTarget).data('house');
-    var occupied = currentConf.controlledLands[house].filter(function ( obj ) {
-        if(obj !== undefined && obj.land === land) { return obj }
+                if(landHouse[i].land === land) {
+                    landHouse[i].units[unit]--;
+                }
+                var units = 0;
+                $.each(currentConf.controlledLands[landHouseIndex][i].units, function (unitIndex, unit) {
+                   units += unit;
+                });
+
+                if(units <= 0) {
+                    currentConf.controlledLands[landHouseIndex].splice(i, 1);
+                }
+            };
+        });
+
+        location.hash = $.param(currentConf);
     });
 
-    if(occupied === 0) {
-        occupied.units[unitRank] += 1;
-    }else{
-        var newUnit =
-        {
-            'land': land,
-            'order': false,
-            'units':
+    //Unlimited add
+    $('.navContent').on('click', '.placeUnit', function (event) {
+        var unitRank = $(event.delegateTarget).find('.newUnit .unitRank').val();
+        var land = $(event.delegateTarget).find('.newUnit .land').val();
+
+        var house = $(event.delegateTarget).data('house');
+        var occupied = currentConf.controlledLands[house].filter(function ( obj ) {
+            if(obj !== undefined && obj.land === land) { return obj }
+        });
+
+        if(occupied === 0) {
+            occupied.units[unitRank] += 1;
+        }else{
+            var newUnit =
             {
-                'knight': 0,
-                'footman': 0,
-                'ship': 0,
-                'powertoken': 0
-            }
-        };
-        // $.each(currentConf.controlledLands, function (landHouseIndex, landHouse) {
-        //     $.each(house, function (landIndex, landObj) {
-        //         if(landObj.land === land && house === landHouse) {
-        //             currentConf.controlledLands[house][landIndex].splice(landIndex, 1);
-        //         }
-        //         if(landObj.land === land && house !== landHouse) {
+                'land': land,
+                'order': false,
+                'units':
+                {
+                    'knight': 0,
+                    'footman': 0,
+                    'ship': 0,
+                    'powertoken': 0
+                }
+            };
+            // $.each(currentConf.controlledLands, function (landHouseIndex, landHouse) {
+            //     $.each(house, function (landIndex, landObj) {
+            //         if(landObj.land === land && house === landHouse) {
+            //             currentConf.controlledLands[house][landIndex].splice(landIndex, 1);
+            //         }
+            //         if(landObj.land === land && house !== landHouse) {
 
-        //         }
-        //     });
-        // });
+            //         }
+            //     });
+            // });
 
-        newUnit.units[unitRank] += 1;
-        currentConf.controlledLands[house].push(newUnit);
-    }
-    location.hash = $.param(currentConf);
-});
+            newUnit.units[unitRank] += 1;
+            currentConf.controlledLands[house].push(newUnit);
+        }
+        location.hash = $.param(currentConf);
+    });
 
-// setting hash on form change
-$('.navContent .updateBoard :input').on('change', function () {
-    location.hash = hash;
-});
+    // setting hash on form change
+    $('.navContent .updateBoard :input').on('change', function () {
+        location.hash = hash;
+    });
 
-// setting board and form on hash change
-$(window).on('hashchange', function () {
-    var hash = location.hash;
-    if (hash.indexOf('#') === 0) {
-        hash = hash.substr(1);
-    }
-    try {
-        currentConf = $.deparam(hash);
-        console.log('Hased on change');
+    // setting board and form on hash change
+    $(window).on('hashchange', function () {
+        var hash = location.hash;
+        if (hash.indexOf('#') === 0) {
+            hash = hash.substr(1);
+        }
+        try {
+            currentConf = $.deparam(hash);
+            console.log('Hased on change');
 
-    } catch (e) {
-        console.log(e);
-        console.log('failed to apply new settings');
-    }
-    setBoard(currentConf);
-    setShortLink(location.href);
-});
-// click listener for powertoken change
-$('body').on('click', '.availablePowertokens', function (e) {
-    var house = $(this).data('house');
-    var tokens = $(this).data('tokens');
-    currentConf.powertokens[house] = tokens+1;
-    location.hash = $.param(currentConf);
-});
-$('body').on('click','.leftPowertokens', function (e) {
-    var house = $(this).data('house');
-    var tokens = $(this).data('tokens');
-    currentConf.powertokens[house] = tokens-1;
-    location.hash = $.param(currentConf);
-});
+        } catch (e) {
+            console.log(e);
+            console.log('failed to apply new settings');
+        }
+        setBoard(currentConf);
+        setShortLink(location.href);
+    });
+    // click listener for powertoken change
+    $('body').on('click', '.availablePowertokens', function (e) {
+        var house = $(this).data('house');
+        var tokens = $(this).data('tokens');
+        currentConf.powertokens[house] = tokens+1;
+        location.hash = $.param(currentConf);
+    });
+    $('body').on('click','.leftPowertokens', function (e) {
+        var house = $(this).data('house');
+        var tokens = $(this).data('tokens');
+        currentConf.powertokens[house] = tokens-1;
+        location.hash = $.param(currentConf);
+    });
 
-$('.housecards').on('click', 'input', function (event) {
-    var house = $(this).data('house');
-    var card = $(this).data('card');
+    $('.housecards').on('click', 'input', function (event) {
+        var house = $(this).data('house');
+        var card = $(this).data('card');
 
-    var used = (currentConf.housecards[house][card].used === 'true');
-    currentConf.housecards[house][card].used = !used;
-    location.hash = $.param(currentConf);
-});
-$('.singleValue').on('change', function (element) {
-    var path = $(this).data('path');
-    var house = $(this).data('house');
+        var used = (currentConf.housecards[house][card].used === 'true');
+        currentConf.housecards[house][card].used = !used;
+        location.hash = $.param(currentConf);
+    });
+    $('.singleValue').on('change', function (element) {
+        var path = $(this).data('path');
+        var house = $(this).data('house');
 
-    var value = $(this).val();
+        var value = $(this).val();
 
-    if(!$.isNumeric(value) && value < 0 && value > 6) return false;
-    currentConf[path][house] = $(this).val();
-    location.hash = $.param(currentConf);
-});
+        if(!$.isNumeric(value) && value < 0 && value > 6) return false;
+        currentConf[path][house] = $(this).val();
+        location.hash = $.param(currentConf);
+    });
 
-
-    // var $target = $(e.target);
-    // if ($target.hasClass('availablePowertokens')) {
-        // e.preventDefault();
-        // var $input = $('[name="available' + $target.parent().attr('class').replace(/.*powertoken-([^ ]*)/, 'Powertokens-\$1') + '"]');
-        // $input.val($input.val() - 1)
-    //         .trigger('change');
-    // } else if ($target.hasClass('leftPowertokens')) {
-    //     e.preventDefault();
-    //     var $input = $('[name="available' + $target.parent().attr('class').replace(/.*powertoken-([^ ]*)/, 'Powertokens-\$1') + '"]');
-    //     $input.val(+$input.val() + 1)
-    //         .trigger('change');
-    // } else if ($target.hasClass('vsb-token')) {
-    //     e.preventDefault();
-    //     var $input = $('[name="vsb-used"]');
-    //     $input.attr('checked', !$target.hasClass('used'))
-    //         .trigger('change');
-    // } else if ($target.hasClass('raven-token')) {
-    //     e.preventDefault();
-    //     var $input = $('[name="raven-used"]');
-    //     $input.attr('checked', !$target.hasClass('used'))
-    //         .trigger('change');
-    // }
 });
