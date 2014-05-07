@@ -14,7 +14,7 @@ var $board = $('.board'),
         $('#shortlink').html('http://tinyurl.com/' + string);
     },
     setBoard = function (conf) {
-        console.log('set board');
+        console.log(conf);
         var value,
             htmlString = '';
         $.each(conf.ironThroneOrder, function (index, house) {
@@ -228,19 +228,19 @@ $('body').on('click', '.unit', function (element) {
     var unit = $(this).data('unit');
     var land = $(this).data('land');
 
-    $.each(currentConf.controlledLands, function (houseIndex, house) {
-        for(var i = house.length-1; i >= 0; i -= 1) {
+    $.each(currentConf.controlledLands, function (landHouseIndex, landHouse) {
+        for(var i = landHouse.length-1; i >= 0; i -= 1) {
 
-            if(house[i].land === land) {
-                house[i].units[unit]--;
+            if(landHouse[i].land === land) {
+                landHouse[i].units[unit]--;
             }
             var units = 0;
-            $.each(currentConf.controlledLands[houseIndex][i].units, function (unitIndex, unit) {
+            $.each(currentConf.controlledLands[landHouseIndex][i].units, function (unitIndex, unit) {
                units += unit;
             });
 
-            if(units === 0) {
-                currentConf.controlledLands[houseIndex].splice(i, 1);
+            if(units <= 0) {
+                currentConf.controlledLands[landHouseIndex].splice(i, 1);
             }
         };
     });
@@ -273,13 +273,16 @@ $('.navContent').on('click', '.placeUnit', function (event) {
                 'powertoken': 0
             }
         };
-        $.each(currentConf.controlledLands, function (index, house) {
-            $.each(house, function (landIndex, landObj){
-                if(landObj.land === land) {
-                    currentConf.controlledLands[house][landIndex].splice(landIndex, 1);
-                }
-            });
-        });
+        // $.each(currentConf.controlledLands, function (landHouseIndex, landHouse) {
+        //     $.each(house, function (landIndex, landObj) {
+        //         if(landObj.land === land && house === landHouse) {
+        //             currentConf.controlledLands[house][landIndex].splice(landIndex, 1);
+        //         }
+        //         if(landObj.land === land && house !== landHouse) {
+
+        //         }
+        //     });
+        // });
 
         newUnit.units[unitRank] += 1;
         currentConf.controlledLands[house].push(newUnit);
@@ -336,7 +339,7 @@ $('.singleValue').on('change', function (element) {
     var house = $(this).data('house');
 
     var value = $(this).val();
-    
+
     if(!$.isNumeric(value) && value < 0 && value > 6) return false;
     currentConf[path][house] = $(this).val();
     location.hash = $.param(currentConf);
